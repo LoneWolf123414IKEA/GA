@@ -30,7 +30,7 @@ namespace ver1
         Random rand = new Random();
         public void Floor(int a)
         {
-            if (a < 1) a = 2;
+            if (a < 2) a = 2;
             a = Math.Pow(2, a);
             rooms = new Room[a, a];
             int maxSize = (a*a/2)
