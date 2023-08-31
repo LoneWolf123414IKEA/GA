@@ -42,8 +42,8 @@ namespace ver1
             while(flRooms.length < maxsize)
             {
                 scource = rand.Next(flRooms.length);
-                x = flRooms[scource].x
-                y = flRooms[scource].y
+                x = flRooms[scource].getx
+                y = flRooms[scource].gety
                 switch(rand.Next(4))
                 {
                     case 0:
