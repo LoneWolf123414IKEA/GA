@@ -59,7 +59,7 @@ namespace ver1
                         if(y!=0) y--;
                         break;
                 }
-                if(object.Equals(rooms[x, y], mull))
+                if(object.Equals(rooms[x, y], null))
                 {
                     rooms[x, y] = new Room(0);
                 }
@@ -68,7 +68,7 @@ namespace ver1
             {
                 for(int j; j < a; j++)
                 {
-                    if(object.Equals(rooms[x, y], mull))
+                    if(object.Equals(rooms[x, y], null))
                     {
                         Console.Write("y");
                     }
