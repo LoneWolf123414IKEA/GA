@@ -1,0 +1,4 @@
+C:\Users\Admin\Documents\GitHub\GA\experimenting\mapping\ver1\obj\Debug\net7.0\ver1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\GitHub\GA\experimenting\mapping\ver1\obj\Debug\net7.0\ver1.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\GitHub\GA\experimenting\mapping\ver1\obj\Debug\net7.0\ver1.AssemblyInfo.cs
+C:\Users\Admin\Documents\GitHub\GA\experimenting\mapping\ver1\obj\Debug\net7.0\ver1.csproj.CoreCompileInputs.cache
