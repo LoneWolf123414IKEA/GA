@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/experimenting/mapping/ver1/ver1.csproj",
+                "${workspaceFolder}/experimenting/JSON/V!/V!.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/experimenting/mapping/ver1/ver1.csproj",
+                "${workspaceFolder}/experimenting/JSON/V!/V!.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/experimenting/mapping/ver1/ver1.csproj"
+                "${workspaceFolder}/experimenting/JSON/V!/V!.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
