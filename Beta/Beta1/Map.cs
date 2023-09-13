@@ -1,7 +1,6 @@
-using system;
-namespace ver1
+namespace Beta1
 {
-    public class FloorRoom
+    public class Vector
     {
         private int x
         {
@@ -17,33 +16,30 @@ namespace ver1
                 return y;
             }
         }
-        public FloorRoom(int a, int b)
+        public void FloorRoom(int a, int b)
         {
             x = a;
             y = b;
         }
     }
-    public class Floor
+    
+    public class Map
     {
-        private list<FloorRoom> flRooms = new list<FloorRoom>();
-        private Room[,] rooms;
+        Room?[,] rooms = new Room?[5,5];
         Random rand = new Random();
-        public void Floor(int a)
+        public Map()
         {
-            if (a < 2) a = 2;
-            a = Math.Pow(2, a);
-            rooms = new Room[a, a];
-            int maxSize = (a*a/2);
-            int x = rand.Next(a);
+            List<Vector> vectors = new List<Vector>();
+            int x = rand.Next(5);
             int y = 0;
             int scource;
-            rooms[x, y] = new Room("start");
-            flRooms.Add(new FloorRoom(x, y));
-            while(flRooms.length < maxsize)
+            rooms[x, y] = new Room();
+            vectors.Add(new Vector(x, y));
+            while(vectors.length < maxsize)
             {
                 scource = rand.Next(flRooms.length);
-                x = flRooms[scource].getx;
-                y = flRooms[scource].gety;
+                x = vectors[scource].getx;
+                y = vectors[scource].gety;
                 switch(rand.Next(4))
                 {
                     case 0:
@@ -64,9 +60,9 @@ namespace ver1
                     rooms[x, y] = new Room(0);
                 }
             }
-            for(int i; i < a; i++)
+            for(int i; i < 5; i++)
             {
-                for(int j; j < a; j++)
+                for(int j; j < 5; j++)
                 {
                     if(object.Equals(rooms[x, y], null))
                     {
@@ -78,7 +74,20 @@ namespace ver1
                     }
                 }
 
-                
+                    
+            }
+        }
+        public class Room
+        {
+            Cell[,] cells = new Cell[5,5];
+
+            public class Cell
+            {
+
+            }
+            public class Enemy
+            {
+
             }
         }
     }
