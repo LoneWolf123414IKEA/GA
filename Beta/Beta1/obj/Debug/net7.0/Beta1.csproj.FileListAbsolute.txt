@@ -1,0 +1,14 @@
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\obj\Debug\net7.0\Beta1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\obj\Debug\net7.0\Beta1.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\obj\Debug\net7.0\Beta1.AssemblyInfo.cs
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\obj\Debug\net7.0\Beta1.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\bin\Debug\net7.0\Beta1.exe
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\bin\Debug\net7.0\Beta1.deps.json
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\bin\Debug\net7.0\Beta1.runtimeconfig.json
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\bin\Debug\net7.0\Beta1.dll
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\bin\Debug\net7.0\Beta1.pdb
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\obj\Debug\net7.0\Beta1.dll
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\obj\Debug\net7.0\refint\Beta1.dll
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\obj\Debug\net7.0\Beta1.pdb
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\obj\Debug\net7.0\Beta1.genruntimeconfig.cache
+C:\Users\Admin\Documents\GitHub\GA\Beta\Beta1\obj\Debug\net7.0\ref\Beta1.dll

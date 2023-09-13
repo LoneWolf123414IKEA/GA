@@ -1,2 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿namespace Beta1
+{
+    class Program
+    {
+        public static void Main()
+        {
+            Map map = new Map();
+        }
+    }
+}

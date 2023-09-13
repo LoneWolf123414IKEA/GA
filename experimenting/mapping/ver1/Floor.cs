@@ -1,21 +1,15 @@
-using system;
+using System;
 namespace ver1
 {
     public class FloorRoom
     {
-        private int x
+        public int x
         {
-            get
-            {
-                return x;
-            }
+            get;set;
         }
-        private int y
+        public int y
         {
-            get
-            {
-                return y;
-            }
+            get;set;
         }
         public FloorRoom(int a, int b)
         {
@@ -25,25 +19,25 @@ namespace ver1
     }
     public class Floor
     {
-        private list<FloorRoom> flRooms = new list<FloorRoom>();
+        private List<FloorRoom> flRooms = new List<FloorRoom>();
         private Room[,] rooms;
         Random rand = new Random();
-        public void Floor(int a)
+        public Floor(int a)
         {
             if (a < 2) a = 2;
-            a = Math.Pow(2, a);
+            a = 5;
             rooms = new Room[a, a];
             int maxSize = (a*a/2);
             int x = rand.Next(a);
             int y = 0;
             int scource;
-            rooms[x, y] = new Room("start");
+            rooms[x, y] = new Room();
             flRooms.Add(new FloorRoom(x, y));
-            while(flRooms.length < maxsize)
+            while(flRooms.Count < maxSize)
             {
-                scource = rand.Next(flRooms.length);
-                x = flRooms[scource].getx;
-                y = flRooms[scource].gety;
+                scource = rand.Next(flRooms.Count);
+                x = flRooms[scource].x;
+                y = flRooms[scource].y;
                 switch(rand.Next(4))
                 {
                     case 0:
@@ -61,14 +55,14 @@ namespace ver1
                 }
                 if(object.Equals(rooms[x, y], null))
                 {
-                    rooms[x, y] = new Room(0);
+                    rooms[x, y] = new Room();
                 }
             }
             for(int i; i < a; i++)
             {
                 for(int j; j < a; j++)
                 {
-                    if(object.Equals(rooms[x, y], null))
+                    if(object.Equals(rooms[i, j], null))
                     {
                         Console.Write("y");
                     }
