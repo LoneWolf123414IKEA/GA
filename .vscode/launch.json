@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/experimenting/JSON/V!/bin/Debug/net7.0/V!.dll",
+            "program": "${workspaceFolder}/Beta/Beta1/bin/Debug/net7.0/Beta1.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/experimenting/JSON/V!",
+            "cwd": "${workspaceFolder}/Beta/Beta1",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

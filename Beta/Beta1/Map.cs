@@ -13,38 +13,41 @@ namespace Beta1
     
     public class Map
     {
-        Room?[,] rooms = new Room?[50,50];
+        Room?[,] rooms = new Room?[8,8];
         Random rand = new Random();
         public Map()
         {
-            for(int i = 0; i < 50; i++)
+            for(int i = 0; i < 8; i++)
             {
-                for(int j = 0; j < 50; j++)
+                for(int j = 0; j < 8; j++)
                 {
                     rooms[i, j] = null;
                 }      
             }
             List<Vector> vectors = new List<Vector>();
-            int x = rand.Next(50);
+            int x = rand.Next(8);
             int y = 0;
             int scource;
             rooms[x, y] = new Room();
             vectors.Add(new Vector(x, y));
-            while(vectors.Count < 1000)
+            int err = 0;
+            
+            while(vectors.Count < 30)
             {
-                scource = rand.Next(vectors.Count);
+                if (vectors.Count < 3) scource = rand.Next(vectors.Count);
+                else scource = rand.Next(((int)Math.Floor(vectors.Count * 0.9)),vectors.Count);
                 x = vectors[scource].x;
                 y = vectors[scource].y;
                 switch(rand.Next(4))
                 {
                     case 0:
-                        if(x!=49) x++;
+                        if(x!=7) x++;
                         break;
                     case 1:
                         if(x!=0) x--;
                         break;
                     case 2:
-                        if(y!=49) y++;
+                        if(y!=7) y++;
                         break;
                     case 3:
                         if(y!=0) y--;
@@ -55,12 +58,34 @@ namespace Beta1
                     rooms[x, y] = new Room();
                     vectors.Add(new Vector(x, y));
                     Console.WriteLine("room generated");
+                    err = 0;
                 }
-                else Console.WriteLine("err");
+                else 
+                {
+                    err++;
+                }
+                if(err>100)
+                {
+                    for(int i = 0; i < 8; i++)
+                    {
+                        for(int j = 0; j < 8; j++)
+                        {
+                            rooms[i, j] = null;
+                        }      
+                    }
+                    vectors = new List<Vector>();
+                    x = rand.Next(8);
+                    y = 0;
+                    rooms[x, y] = new Room();
+                    vectors.Add(new Vector(x, y));
+                    err = 0;
+                    Console.Clear();
+                    Console.WriteLine("Error, Loop encouterd, restarting generation");
+                }
             }
-            for(int i = 0; i < 50; i++)
+            for(int i = 0; i < 8; i++)
             {
-                for(int j = 0; j < 50; j++)
+                for(int j = 0; j < 8; j++)
                 {
                     if(object.Equals(rooms[i, j], null))
                     {
