@@ -14,6 +14,7 @@ namespace V1
             io.mainMenu();
             string jsonStr = JsonSerializer.Serialize(config);
             Console.Write(jsonStr);
+            Console.Read();
         }
     }
 }
