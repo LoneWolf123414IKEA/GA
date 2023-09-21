@@ -1,0 +1,5 @@
+C:\Users\Admin\Documents\GitHub\GA\experimenting\JSON\V!\obj\Debug\netcoreapp2.1\V!.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\GA\experimenting\JSON\V!\obj\Debug\netcoreapp2.1\V!.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\GitHub\GA\experimenting\JSON\V!\obj\Debug\netcoreapp2.1\V!.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\GitHub\GA\experimenting\JSON\V!\obj\Debug\netcoreapp2.1\V!.AssemblyInfo.cs
+C:\Users\Admin\Documents\GitHub\GA\experimenting\JSON\V!\obj\Debug\netcoreapp2.1\V!.csproj.CoreCompileInputs.cache

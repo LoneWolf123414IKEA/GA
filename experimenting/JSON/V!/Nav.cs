@@ -52,6 +52,7 @@ namespace V1
                                 Program.config.editConfig();
                                 break;
                             case 2:
+                                Program.config.editDefault();
                                 break;
                             case 3:
                                 break;
