@@ -2,6 +2,14 @@ namespace V1
 {
     public class Nav
     {
+        public static bool contains(string input, string lim)
+        {
+            foreach(char i in input)
+            {
+                if(!lim.Contains(i)) return false;
+            }
+            return true;
+        }
         public void mainMenu()
         {
             Console.Clear();
@@ -55,6 +63,7 @@ namespace V1
                                 Program.config.editDefault();
                                 break;
                             case 3:
+                                Config.Member.Members();
                                 break;
                             case 4:
                                 break;
