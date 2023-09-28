@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Beta", "Beta", "{15D21E91-682B-4B64-B3A8-AA5AE8A7C9CE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beta1", "Beta\Beta1\Beta1.csproj", "{BB2BCDC3-D8C7-487B-8C3E-EF8908E2D53F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "experimenting", "experimenting", "{51F963D6-5BD6-4D9D-B493-1BBBF1D22DB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JSON", "JSON", "{9721B95B-1BE7-42F3-ADAA-BE1F23830552}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "V!", "experimenting\JSON\V!\V!.csproj", "{0BAE7895-6B09-4CED-B221-FCB6F034BA59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mapping", "mapping", "{976B7AFE-0164-4F27-B89A-5E45A9D2B140}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ver1", "experimenting\mapping\ver1\ver1.csproj", "{77E9D4F2-5CBD-427F-B2F2-D0033269B601}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB2BCDC3-D8C7-487B-8C3E-EF8908E2D53F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB2BCDC3-D8C7-487B-8C3E-EF8908E2D53F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB2BCDC3-D8C7-487B-8C3E-EF8908E2D53F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB2BCDC3-D8C7-487B-8C3E-EF8908E2D53F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BAE7895-6B09-4CED-B221-FCB6F034BA59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BAE7895-6B09-4CED-B221-FCB6F034BA59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BAE7895-6B09-4CED-B221-FCB6F034BA59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BAE7895-6B09-4CED-B221-FCB6F034BA59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77E9D4F2-5CBD-427F-B2F2-D0033269B601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77E9D4F2-5CBD-427F-B2F2-D0033269B601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77E9D4F2-5CBD-427F-B2F2-D0033269B601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77E9D4F2-5CBD-427F-B2F2-D0033269B601}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BB2BCDC3-D8C7-487B-8C3E-EF8908E2D53F} = {15D21E91-682B-4B64-B3A8-AA5AE8A7C9CE}
+		{9721B95B-1BE7-42F3-ADAA-BE1F23830552} = {51F963D6-5BD6-4D9D-B493-1BBBF1D22DB3}
+		{0BAE7895-6B09-4CED-B221-FCB6F034BA59} = {9721B95B-1BE7-42F3-ADAA-BE1F23830552}
+		{976B7AFE-0164-4F27-B89A-5E45A9D2B140} = {51F963D6-5BD6-4D9D-B493-1BBBF1D22DB3}
+		{77E9D4F2-5CBD-427F-B2F2-D0033269B601} = {976B7AFE-0164-4F27-B89A-5E45A9D2B140}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F6477ECA-A154-4E62-846E-D87D7F85EC65}
+	EndGlobalSection
+EndGlobal

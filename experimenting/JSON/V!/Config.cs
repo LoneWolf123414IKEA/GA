@@ -15,8 +15,8 @@ namespace V1
         public string? owner_name{get;set;}
         public int? cooldown_period{get;set;}
         public Default defaul{get;set;}
-        public List<Member?>? members{get;set;} = new List<Member?>();
-        public List<Member?>? additional_profiles{get;set;} = new List<Member?>();
+        public Dictionary<string, Member?>? members{get;set;} = new Dictionary<string, Member?>();
+        public Dictionary<string, Member?>? additional_profiles{get;set;} = new Dictionary<string, Member?>();
 
         public void editConfig()
         {
@@ -472,20 +472,19 @@ namespace V1
         }
         public class Member : Default
         {
-            public string profileName{get;set;}
             public static void Members()
             {
                 Console.Clear();
                 int pos = 1;
-                int count = 1;
+                int count;
                 while(true)
                 {
                     count = 1;
                     Console.CursorVisible = false;
-                    foreach(Member i in Program.config.members)
+                    foreach(string i in Program.config.members.Keys)
                     {
                         Console.SetCursorPosition(3, count);
-                        Console.Write(i.profileName);
+                        Console.Write(i);
                         count++;
                     }
                     Console.SetCursorPosition(3, count);
@@ -525,12 +524,12 @@ namespace V1
                                 Console.SetCursorPosition(1, 1);
                                 Console.Write("please input profile name:");
                                 Console.SetCursorPosition(1, 2);
-                                Program.config.members.Add(new Member(Console.ReadLine()));
+                                Program.config.members.Add(Console.ReadLine(), new Member());
                             }
                             else if(pos == count+1) return;
                             else
                             {
-                                Program.config.members[pos-1].editMember();
+                                Program.config.members.Values.ElementAt(pos-1).editMember();
                             }
                             Console.Clear();
                             Console.SetCursorPosition(1, pos);
@@ -544,7 +543,7 @@ namespace V1
             {
 
                 string tryNum;
-                int num = 0;
+                int num;
                 Console.Clear();
                 Console.CursorVisible = false;
                 Console.SetCursorPosition(1, 1);
@@ -788,9 +787,8 @@ namespace V1
                     }
                 }
             }
-            public Member(string name)
+            public Member()
             {
-                this.profileName = name;
             }
 
         }
@@ -801,7 +799,7 @@ namespace V1
             public string? banner_colour{get;set;}
             public string? bio{get;set;}
             public string? pronouns{get;set;}
-            public List<Guild> guild_overrides{get;set;} = new List<Guild>();
+            public Dictionary<long, Guild> guild_overrides{get;set;} = new Dictionary<long, Guild>();
             public void servers()
             {
                 Console.Clear();
@@ -811,10 +809,10 @@ namespace V1
                 {
                     count = 1;
                     Console.CursorVisible = false;
-                    foreach(Guild i in guild_overrides)
+                    foreach(long i in guild_overrides.Keys)
                     {
                         Console.SetCursorPosition(3, count);
-                        Console.Write(i.guild);
+                        Console.Write(i);
                         count++;
                     }
                     Console.SetCursorPosition(3, count);
@@ -859,7 +857,7 @@ namespace V1
                                     try
                                     {
                                         
-                                        guild_overrides.Add(new Guild(long.Parse(Console.ReadLine())));
+                                        guild_overrides.Add(long.Parse(Console.ReadLine()), new Guild());
                                         break;
                                     }
                                     catch
@@ -874,7 +872,7 @@ namespace V1
                             else if(pos == count+1) return;
                             else
                             {
-                                guild_overrides[pos-1].setGuild();
+                                guild_overrides.Values.ElementAt(pos-1).setGuild();
                             }
                             Console.Clear();
                             Console.SetCursorPosition(1, pos);
@@ -888,13 +886,11 @@ namespace V1
 
             public class Guild
             {
-                public long guild{get;set;}
-                public Role? role{get;set;}
+                public Dictionary<long, Role> roles{get;set;} = new Dictionary<long, Role>();
                 public string? display_name{get;set;}
                 public string? pronouns{get;set;}
-                public Guild(long name)
+                public Guild()
                 {
-                    this.guild = name;
                 }
                 public void setGuild()
                 {
@@ -1008,14 +1004,14 @@ namespace V1
                                         }
                                         break;
                                     case 3:
-                                        if(role == null)
+                                        if(roles.Count == 0)
                                         {
                                             Console.Clear();
                                             Console.SetCursorPosition(1,1);
                                             Console.Write("input role id: ");
                                             try
                                             {
-                                                role = new Role(long.Parse(Console.ReadLine()));
+                                                roles.Add(long.Parse(Console.ReadLine()), new Role());
                                             }
                                             catch{}
                                         }
@@ -1024,11 +1020,11 @@ namespace V1
                                             Console.Clear();
                                             Console.SetCursorPosition(1,1);
                                             Console.Write("input role name: ");
-                                            role.name="";
-                                            while (role.name.Length < 1) 
+                                            roles.Values.ElementAt(0).name="";
+                                            while (roles.Values.ElementAt(0).name.Length < 1) 
                                             {
                                                 Console.SetCursorPosition(18, 1);
-                                                role.name = Console.ReadLine();
+                                                roles.Values.ElementAt(0).name = Console.ReadLine();
                                             }
                                             Console.SetCursorPosition(1, 2);
                                             Console.Write("input role hex: ");
@@ -1038,7 +1034,7 @@ namespace V1
                                                 tryNum = Console.ReadLine();
                                                 if((tryNum.Length == 6 && Nav.contains(tryNum, "1234567890abcdefABCDEF")) || tryNum.Length == 0)
                                                 {
-                                                    role.colour = tryNum;
+                                                    roles.Values.ElementAt(0).colour = tryNum;
                                                     break;
                                                 }
                                             }
@@ -1050,10 +1046,10 @@ namespace V1
                                     default:
                                         if(display_name == null) display_name = "";
                                         if(pronouns == null) pronouns = "";
-                                        if(role != null)
+                                        if(roles.Count != 0)
                                         {
-                                            if(role.name == null) role.name = "forgetfull";
-                                            if(role.colour == null) role.colour = "AACCEE";
+                                            if(roles.Values.ElementAt(0).name == null) roles.Values.ElementAt(0).name = "forgetfull";
+                                            if(roles.Values.ElementAt(0).colour == null) roles.Values.ElementAt(0).colour = "AACCEE";
                                         }
                                         return;
                                 }
@@ -1063,12 +1059,10 @@ namespace V1
                 }
                 public class Role 
                 {
-                    public long role{get;set;}
                     public string name{get;set;}
                     public string colour{get;set;}
-                    public Role(long id)
+                    public Role()
                     {
-                        role = id;
                     }
                 }
             }
