@@ -451,11 +451,6 @@ namespace V1
                                 break;
                             default:
                                 Console.Clear();
-                                if(defaul.avatar == null) defaul.avatar = "url; https://avatarfiles.alphacoders.com/894/89415.jpg";
-                                if(defaul.banner_colour == null) defaul.banner_colour = "AACCEE";
-                                if(defaul.display_name == null) defaul.display_name = "Abe Sentmind";
-                                if(defaul.bio == null) defaul.bio = "";
-                                if(defaul.pronouns == null) defaul.pronouns = "";
                                 return;
                         }
                         Console.Clear();
@@ -466,7 +461,11 @@ namespace V1
         public Config()
         {
             defaul = new Default();
-
+            token = "RENAME THIS";
+            identity = "RENAME THIS";
+            owner = 1234;
+            owner_name = "RENAME THIS AND ANY 1234";
+            cooldown_period = 60;
         }
         public class Member : Default
         {

@@ -28,6 +28,7 @@ namespace V1
             {
                 WriteIndented = true
             };
+            writerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
             string jsonStr = JsonSerializer.Serialize(config, writerOptions);
             Console.Write(jsonStr);
             
