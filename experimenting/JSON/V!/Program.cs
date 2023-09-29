@@ -11,11 +11,13 @@ namespace V1
         public static Config config = new Config();
         public static void Main()
         {
+            string jsonStr;
             if(File.Exists("config.json"))
             {
                 try
                 {
-                    config = JsonSerializer.Deserialize<Config>(File.ReadAllText("config.json"));
+                    jsonStr = File.ReadAllText("config.json");
+                    config = JsonSerializer.Deserialize<Config>(jsonStr);
                     File.Delete("config.json");
                 }
                 catch
@@ -29,7 +31,7 @@ namespace V1
                 WriteIndented = true
             };
             writerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
-            string jsonStr = JsonSerializer.Serialize(config, writerOptions);
+            jsonStr = JsonSerializer.Serialize(config, writerOptions);
             Console.Write(jsonStr);
             
 

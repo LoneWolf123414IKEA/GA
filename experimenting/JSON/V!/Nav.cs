@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic;
+
 namespace V1
 {
     public class Nav
@@ -9,6 +11,223 @@ namespace V1
                 if(!lim.Contains(i)) return false;
             }
             return true;
+        }
+        public static List<string>? setvar(List<string> strings, string lim, int low = 0, int high = int.MaxValue)
+        {
+            int count;
+            int pos = 1;
+            string testvalue;
+            Console.Clear();
+            while(true)
+            {
+                count = 0;
+                foreach (string i in strings)
+                {
+                    Console.SetCursorPosition(3, count + 1);
+                    Console.Write(i);
+                    count++;
+                }
+                Console.SetCursorPosition(3, count+1);
+                Console.Write("new");
+                Console.SetCursorPosition(3, count+2);
+                Console.Write("return");
+                Console.SetCursorPosition(1, pos);
+                Console.Write('>');
+
+
+
+
+                switch (Console.ReadKey(false).Key)
+                {
+                    case ConsoleKey.Escape:
+                        if(strings.Count == 0) return null;
+                        return strings;
+                    case ConsoleKey.UpArrow:
+                        if (pos != 1)
+                        {
+                            Console.SetCursorPosition(1, pos);
+                            Console.Write(' ');
+                            pos--;
+                            Console.SetCursorPosition(1, pos);
+                            Console.Write('>');
+                        }
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if (pos != count+2)
+                        {
+                            Console.SetCursorPosition(1, pos);
+                            Console.Write(' ');
+                            pos++;
+                            Console.SetCursorPosition(1, pos);
+                            Console.Write('>');
+                        }
+                        break;
+                    case ConsoleKey.Enter:
+                    {
+                        if(pos <= count)
+                        { 
+                            testvalue = strings[pos-1];
+                            while(true)
+                            {
+                                Console.SetCursorPosition(3, pos);
+                                for(int i = testvalue.Length; i > 0; i--)
+                                {
+                                    Console.Write(" ");
+                                }
+                                Console.SetCursorPosition(3, pos);
+                                testvalue = Console.ReadLine();
+                                if(testvalue.Length <= high && testvalue.Length >= low && contains(testvalue, lim))
+                                {
+                                    strings[pos-1] = testvalue;
+                                    break;
+                                }
+
+                            }
+                        }
+                        if(pos == count + 1)
+                        {
+                            testvalue = "new";
+                            while(true)
+                            {
+                                Console.SetCursorPosition(3, pos);
+                                for(int i = testvalue.Length; i > 0; i--)
+                                {
+                                    Console.Write(" ");
+                                }
+                                Console.SetCursorPosition(3, pos);
+                                testvalue = Console.ReadLine();
+                                if(testvalue.Length <= high && testvalue.Length >= low && contains(testvalue, lim))
+                                {
+                                    strings.Add(testvalue);
+                                    break;
+                                }
+
+                            }
+                            
+                        }
+                        else if(strings.Count == 0) return null;
+                        else return strings;
+                        Console.Clear();
+                        break;
+                        
+                    }
+                    case ConsoleKey.Backspace:
+                    case ConsoleKey.Delete:
+                    {
+                        if(pos <= count) strings.RemoveAt(pos-1);
+                        Console.Clear();
+                        break;
+                    }
+                }
+            }
+        }
+        public static List<string>? setvar(List<string> strings, int low = 0, int high = int.MaxValue)
+        {
+            Console.Clear();
+            int count;
+            int pos = 1;
+            string testvalue;
+            while(true)
+            {
+                count = 0;
+                foreach (string i in strings)
+                {
+                    Console.SetCursorPosition(3, count + 1);
+                    Console.Write(i);
+                    count++;
+                }
+                Console.SetCursorPosition(3, count+1);
+                Console.Write("new");
+                Console.SetCursorPosition(3, count+2);
+                Console.Write("return");
+                Console.SetCursorPosition(1, pos);
+                Console.Write('>');
+
+
+
+
+                switch (Console.ReadKey(false).Key)
+                {
+                    case ConsoleKey.Escape:
+                        if(strings.Count == 0) return null;
+                        return strings;
+                    case ConsoleKey.UpArrow:
+                        if (pos != 1)
+                        {
+                            Console.SetCursorPosition(1, pos);
+                            Console.Write(' ');
+                            pos--;
+                            Console.SetCursorPosition(1, pos);
+                            Console.Write('>');
+                        }
+                        break;
+                    case ConsoleKey.DownArrow:
+                        if (pos != count+2)
+                        {
+                            Console.SetCursorPosition(1, pos);
+                            Console.Write(' ');
+                            pos++;
+                            Console.SetCursorPosition(1, pos);
+                            Console.Write('>');
+                        }
+                        break;
+                    case ConsoleKey.Enter:
+                    {
+                        if(pos <= count)
+                        { 
+                            testvalue = strings[pos-1];
+                            while(true)
+                            {
+                                Console.SetCursorPosition(3, pos);
+                                for(int i = testvalue.Length; i > 0; i--)
+                                {
+                                    Console.Write(" ");
+                                }
+                                Console.SetCursorPosition(3, pos);
+                                testvalue = Console.ReadLine();
+                                if(testvalue.Length <= high && testvalue.Length >= low)
+                                {
+                                    strings[pos-1] = testvalue;
+                                    break;
+                                }
+
+                            }
+                        }
+                        if(pos == count + 1)
+                        {
+                            testvalue = "new";
+                            while(true)
+                            {
+                                Console.SetCursorPosition(3, pos);
+                                for(int i = testvalue.Length; i > 0; i--)
+                                {
+                                    Console.Write(" ");
+                                }
+                                Console.SetCursorPosition(3, pos);
+                                testvalue = Console.ReadLine();
+                                if(testvalue.Length <= high && testvalue.Length >= low)
+                                {
+                                    strings.Add(testvalue);
+                                    break;
+                                }
+
+                            }
+                            
+                        }
+                        else if(strings.Count == 0) return null;
+                        else return strings;
+                        Console.Clear();
+                        break;
+                    }
+                    case ConsoleKey.Backspace:
+                    case ConsoleKey.Delete:
+                    {
+                        if(pos <= count) strings.RemoveAt(pos-1);
+                        Console.Clear();
+                        break;
+                    }
+                }
+            }
         }
         public void mainMenu()
         {
