@@ -63,9 +63,10 @@ namespace V1
                                 Program.config.editDefault();
                                 break;
                             case 3:
-                                Config.Member.Members();
+                                Config.Member.Members(true);
                                 break;
                             case 4:
+                                Config.Member.Members(false);
                                 break;
                             default: 
                                 Console.Clear();

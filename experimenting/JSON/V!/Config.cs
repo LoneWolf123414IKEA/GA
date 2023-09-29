@@ -1,4 +1,7 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
+using System.IO.Compression;
+using System.Net.Http.Headers;
 using System.Runtime.Serialization;
 using Microsoft.VisualBasic;
 namespace V1
@@ -263,11 +266,6 @@ namespace V1
                 {
                     case ConsoleKey.Escape:
                         Console.Clear();
-                        if(defaul.avatar == null) defaul.avatar = "url; https://avatarfiles.alphacoders.com/894/89415.jpg";
-                        if(defaul.banner_colour == null) defaul.banner_colour = "AACCEE";
-                        if(defaul.display_name == null) defaul.display_name = "Abe Sentmind";
-                        if(defaul.bio == null) defaul.bio = "";
-                        if(defaul.pronouns == null) defaul.pronouns = "";
                         return;
                     case ConsoleKey.UpArrow:
                         if (pos != 1)
@@ -472,7 +470,7 @@ namespace V1
         }
         public class Member : Default
         {
-            public static void Members()
+            public static void Members(bool mem)
             {
                 Console.Clear();
                 int pos = 1;
@@ -481,11 +479,24 @@ namespace V1
                 {
                     count = 1;
                     Console.CursorVisible = false;
-                    foreach(string i in Program.config.members.Keys)
+                    if(mem)
                     {
-                        Console.SetCursorPosition(3, count);
-                        Console.Write(i);
-                        count++;
+                        foreach(string i in Program.config.members.Keys)
+                        {
+                            Console.SetCursorPosition(3, count);
+                            Console.Write(i);
+                            count++;
+                        }
+                    }
+                    else
+                    {
+                        foreach(string i in Program.config.additional_profiles.Keys)
+                        {
+                            Console.SetCursorPosition(3, count);
+                            Console.Write(i);
+                            count++;
+                        }
+                        
                     }
                     Console.SetCursorPosition(3, count);
                     Console.Write("New");
@@ -524,12 +535,23 @@ namespace V1
                                 Console.SetCursorPosition(1, 1);
                                 Console.Write("please input profile name:");
                                 Console.SetCursorPosition(1, 2);
-                                Program.config.members.Add(Console.ReadLine(), new Member());
+                                if(mem)
+                                {
+                                    Program.config.members.Add(Console.ReadLine(), new Member());
+                                }
+                                else
+                                {
+                                    Program.config.additional_profiles.Add(Console.ReadLine(), new Member());
+                                }
                             }
                             else if(pos == count+1) return;
-                            else
+                            else if(mem)
                             {
                                 Program.config.members.Values.ElementAt(pos-1).editMember();
+                            }
+                            else
+                            {
+                                Program.config.additional_profiles.Values.ElementAt(pos-1).editMember();
                             }
                             Console.Clear();
                             Console.SetCursorPosition(1, pos);
@@ -804,7 +826,7 @@ namespace V1
             {
                 Console.Clear();
                 int pos = 1;
-                int count = 1;
+                int count;
                 while(true)
                 {
                     count = 1;
@@ -889,6 +911,8 @@ namespace V1
                 public Dictionary<long, Role> roles{get;set;} = new Dictionary<long, Role>();
                 public string? display_name{get;set;}
                 public string? pronouns{get;set;}
+                
+                public Settings settings{get;set;} = new Settings();
                 public Guild()
                 {
                 }
@@ -906,6 +930,8 @@ namespace V1
                         Console.SetCursorPosition(3, 3);
                         Console.Write("Role");
                         Console.SetCursorPosition(3, 4);
+                        Console.Write("Settongs");
+                        Console.SetCursorPosition(3, 5);
                         Console.Write("return to menu");
 
 
@@ -1042,7 +1068,193 @@ namespace V1
                                         }
                                         Console.Clear();
                                         break;
+                                    case 4:
+                                        int pos2 = 1;
+                                        bool done;
+                                        int pos3;
+                                        int count;
 
+                                        while (true)
+                                        {
+                                            Console.Clear();
+                                            Console.CursorVisible = false;
+                                            Console.SetCursorPosition(7, 1);
+                                            Console.Write("everyone pings");
+                                            Console.SetCursorPosition(7, 2);
+                                            Console.Write("role pings");
+                                            Console.SetCursorPosition(7, 3);
+                                            Console.Write("event notifications");
+                                            Console.SetCursorPosition(7, 4);
+                                            Console.Write("notifications");
+                                            Console.SetCursorPosition(7, 5);
+                                            Console.Write("mobile push notifs");
+                                            Console.SetCursorPosition(7, 6);
+                                            Console.Write("muted");
+                                            Console.SetCursorPosition(7, 7);
+                                            Console.Write("hide muted");
+                                            Console.SetCursorPosition(7, 8);
+                                            Console.Write("for you notifs");
+                                            Console.SetCursorPosition(3, 9);
+                                            Console.Write("channels");
+                                            Console.SetCursorPosition(3, 10);
+                                            Console.Write("return to menu");
+
+
+                                            Console.SetCursorPosition(3,1);
+                                            if(settings.supress_everyone) Console.Write(" X ");
+                                            else Console.Write(" O ");
+                                            Console.SetCursorPosition(3,2);
+                                            if(settings.supress_roles) Console.Write(" X ");
+                                            else Console.Write(" O ");
+                                            Console.SetCursorPosition(3,3);
+                                            if(settings.mute_scheduled_events) Console.Write(" X ");
+                                            else Console.Write(" O ");
+                                            Console.SetCursorPosition(3,4);
+                                            if(settings.message_notifications == 0) Console.Write("ALL");
+                                            else if(settings.message_notifications == 1) Console.Write(" @ ");
+                                            else if(settings.message_notifications == 2) Console.Write("NON");
+                                            else Console.Write("ERR");
+                                            Console.SetCursorPosition(3,5);
+                                            if(settings.mobile_push) Console.Write(" O ");
+                                            else Console.Write(" X ");
+                                            Console.SetCursorPosition(3,6);
+                                            if(settings.muted) Console.Write(" O ");
+                                            else Console.Write(" X ");
+                                            Console.SetCursorPosition(3,7);
+                                            if(settings.hide_muted_channels) Console.Write(" O ");
+                                            else Console.Write(" X ");
+                                            Console.SetCursorPosition(3,8);
+                                            if(settings.notify_highlights == 0) Console.Write(" O ");
+                                            else Console.Write(" X ");
+                                            Console.SetCursorPosition(1, pos2);
+                                            Console.Write('>');
+                                            switch (Console.ReadKey(false).Key)
+                                            {
+                                                case ConsoleKey.Escape:
+                                                    return;
+                                                case ConsoleKey.UpArrow:
+                                                    if (pos2 != 1)
+                                                    {
+                                                        Console.SetCursorPosition(1, pos2);
+                                                        Console.Write(' ');
+                                                        pos2--;
+                                                        Console.SetCursorPosition(1, pos2);
+                                                        Console.Write('>');
+                                                    }
+                                                    break;
+                                                case ConsoleKey.DownArrow:
+                                                    if (pos2 != 9)
+                                                    {
+                                                        Console.SetCursorPosition(1, pos2);
+                                                        Console.Write(' ');
+                                                        pos2++;
+                                                        Console.SetCursorPosition(1, pos2);
+                                                        Console.Write('>');
+                                                    }
+                                                    break;
+                                                case ConsoleKey.Enter:
+                                                    switch(pos2)
+                                                    {
+                                                        case 1:
+                                                            if(settings.supress_everyone) settings.supress_everyone = false;
+                                                            else settings.supress_everyone = true;
+                                                            break;
+                                                        case 2:
+                                                            if(settings.supress_roles) settings.supress_roles = false;
+                                                            else settings.supress_roles = true;
+                                                            break;
+                                                        case 3:
+                                                            if(settings.mute_scheduled_events) settings.mute_scheduled_events = false;
+                                                            else settings.mute_scheduled_events = true;
+                                                            break;
+                                                        case 4:
+                                                            if(settings.message_notifications == 0) settings.message_notifications = 1;
+                                                            else if(settings.message_notifications == 1) settings.message_notifications = 2;
+                                                            else settings.message_notifications = 0;
+                                                            break;
+                                                        case 5:
+                                                            if(settings.mobile_push) settings.mobile_push = false;
+                                                            else settings.mobile_push = true;
+                                                            break;
+                                                        case 6:
+                                                            if(settings.muted) settings.muted = false;
+                                                            else settings.muted = true;
+                                                            break;
+                                                        case 7:
+                                                            if(settings.hide_muted_channels) settings.hide_muted_channels = false;
+                                                            else settings.hide_muted_channels = true;
+                                                            break;
+                                                        case 8:
+                                                            if(settings.notify_highlights == 1) settings.notify_highlights = 0;
+                                                            else settings.notify_highlights = 1;
+                                                            break;
+                                                        case 9:
+                                                            done = true;
+                                                            pos3 = 1;
+                                                            while(done)
+                                                            {
+                                                                count = 0;
+                                                                Console.Clear();
+                                                                foreach (Settings.Ovr i in settings.channel_overrides)
+                                                                {
+                                                                    Console.SetCursorPosition(3, count + 1);
+                                                                    Console.Write(i.channel_id);
+                                                                    count++;
+                                                                }
+                                                                Console.SetCursorPosition(3, count+1);
+                                                                Console.Write("new");
+                                                                Console.SetCursorPosition(3, count+2);
+                                                                Console.Write("return");
+                                                                Console.SetCursorPosition(1, pos3);
+                                                                Console.Write('>');
+
+
+
+
+                                                                switch (Console.ReadKey(false).Key)
+                                                                {
+                                                                    case ConsoleKey.Escape:
+                                                                        return;
+                                                                    case ConsoleKey.UpArrow:
+                                                                        if (pos3 != 1)
+                                                                        {
+                                                                            Console.SetCursorPosition(1, pos3);
+                                                                            Console.Write(' ');
+                                                                            pos3--;
+                                                                            Console.SetCursorPosition(1, pos3);
+                                                                            Console.Write('>');
+                                                                        }
+                                                                        break;
+                                                                    case ConsoleKey.DownArrow:
+                                                                        if (pos3 != count+2)
+                                                                        {
+                                                                            Console.SetCursorPosition(1, pos3);
+                                                                            Console.Write(' ');
+                                                                            pos3++;
+                                                                            Console.SetCursorPosition(1, pos3);
+                                                                            Console.Write('>');
+                                                                        }
+                                                                        break;
+                                                                    case ConsoleKey.Enter:
+                                                                    {
+                                                                        if(pos3 == count+2) return;
+                                                                        else if(pos3 == count+1) settings.channel_overrides.Add(Settings.Ovr.edit(null));
+                                                                        else
+                                                                        {
+                                                                            settings.channel_overrides[pos3-1] = Settings.Ovr.edit(settings.channel_overrides[pos3-1].channel_id);
+                                                                        }
+                                                                        break;
+                                                                    }
+                                                                }
+                                                            }
+                                                            break;
+                                                        default:
+                                                            
+                                                            break;
+                                                    }
+                                                    break;
+                                            }
+                                        }
                                     default:
                                         if(display_name == null) display_name = "";
                                         if(pronouns == null) pronouns = "";
@@ -1054,6 +1266,151 @@ namespace V1
                                         return;
                                 }
                                 break;
+                        }
+                    }
+                }
+                public class Settings
+                {
+                    public bool supress_everyone{get;set;}
+                    public bool supress_roles{get;set;}
+                    public bool mute_scheduled_events{get;set;}
+                    public int message_notifications{get;set;}
+                    public int flags{get;set;}
+                    public bool mobile_push{get;set;}
+                    public bool muted{get;set;}
+                    public string? mute_config{get;set;}
+                    public bool hide_muted_channels{get;set;}
+                    public List<Ovr> channel_overrides{get;set;} = new List<Ovr>();
+                    public int notify_highlights{get;set;}
+                    public Settings()
+                    {
+                        supress_everyone = false;
+                        supress_roles = false;
+                        mute_scheduled_events = false;
+                        message_notifications = 0;
+                        flags = 0;
+                        mobile_push = true;
+                        muted = false;
+                        mute_config = null;
+                        hide_muted_channels = true;
+                        notify_highlights = 0;
+                    }
+                    public class Ovr
+                    {
+                        public long channel_id{get;set;}
+                        public bool collapsed{get;set;}
+                        public int message_notifications{get;set;}
+                        public string? mute_config{get;set;}
+                        public bool muted{get;set;}
+                        public Ovr(long id)
+                        {
+                            channel_id = id;
+                            collapsed = false;
+                            message_notifications = 0;
+                            mute_config = null;
+                            muted = false;
+                        }
+                        public static Ovr edit(long? n)
+                        {
+                            if(n == null)
+                            {
+                                while(n == null)
+                                {
+                                    try
+                                    {
+                                        Console.Clear();
+                                        Console.SetCursorPosition(1, 1);
+                                        Console.Write("input ID;");
+                                        Console.SetCursorPosition(1, 2);
+                                        n = long.Parse(Console.ReadLine());
+                                    }
+                                    catch{}
+                                }
+                                return new Ovr(long.Parse(n.ToString()));
+                            }
+                            Ovr ret = new Ovr(long.Parse(n.ToString()));
+
+
+                            int pos2 = 1;
+                            while (true)
+                            {
+                                Console.Clear();
+                                Console.CursorVisible = false;
+                                Console.SetCursorPosition(7, 1);
+                                Console.Write("collapsed");
+                                Console.SetCursorPosition(7, 2);
+                                Console.Write("notifs");
+                                Console.SetCursorPosition(7, 3);
+                                Console.Write("muted");
+                                Console.SetCursorPosition(7, 4);
+                                Console.Write("return");
+
+
+
+
+                                Console.SetCursorPosition(3,1);
+                                if(!ret.collapsed) Console.Write(" X ");
+                                else Console.Write(" O ");
+                                Console.SetCursorPosition(3,2);
+                                if(ret.message_notifications == 0) Console.Write("ALL");
+                                else if(ret.message_notifications == 1) Console.Write(" @ ");
+                                else if(ret.message_notifications == 2) Console.Write("NON");
+                                else Console.Write("ERR");
+                                Console.SetCursorPosition(3,3);
+                                if(ret.muted) Console.Write(" O ");
+                                else Console.Write(" X ");
+                                Console.SetCursorPosition(1, pos2);
+                                Console.Write('>');
+
+
+
+
+                                switch (Console.ReadKey(false).Key)
+                                {
+                                    case ConsoleKey.Escape:
+                                        return ret;
+                                    case ConsoleKey.UpArrow:
+                                        if (pos2 != 1)
+                                        {
+                                            Console.SetCursorPosition(1, pos2);
+                                            Console.Write(' ');
+                                            pos2--;
+                                            Console.SetCursorPosition(1, pos2);
+                                            Console.Write('>');
+                                        }
+                                        break;
+                                    case ConsoleKey.DownArrow:
+                                        if (pos2 != 4)
+                                        {
+                                            Console.SetCursorPosition(1, pos2);
+                                            Console.Write(' ');
+                                            pos2++;
+                                            Console.SetCursorPosition(1, pos2);
+                                            Console.Write('>');
+                                        }
+                                        break;
+                                    case ConsoleKey.Enter:
+                                        switch(pos2)
+                                        {
+                                            case 1:
+                                                if(ret.collapsed) ret.collapsed = false;
+                                                else ret.collapsed = true;
+                                                break;
+                                            case 2:
+                                                if(ret.message_notifications == 0) ret.message_notifications = 1;
+                                                else if(ret.message_notifications == 1) ret.message_notifications = 2;
+                                                else ret.message_notifications = 0;
+                                                break;
+                                            case 3:
+                                                if(ret.muted) ret.muted = false;
+                                                else ret.muted = true;
+                                                break;
+                                            default:
+                                                return ret;
+                                        }
+                                        break;
+                                }
+                            }
                         }
                     }
                 }
