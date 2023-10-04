@@ -17,7 +17,7 @@ namespace V1
         public long? owner{get;set;}
         public string? owner_name{get;set;}
         public int? cooldown_period{get;set;}
-        public Dictionary<string, Default> defaul{get;set;} = new Dictionary<string, Default>();
+        public Default defaul{get;set;} = new();
         public Dictionary<string, Member?>? members{get;set;} = new Dictionary<string, Member?>();
         public Dictionary<string, Member?>? additional_profiles{get;set;} = new Dictionary<string, Member?>();
 
@@ -250,16 +250,6 @@ namespace V1
                 Console.Write("return to menu");
 
 
-                Console.SetCursorPosition(14,1);
-                Console.Write(defaul["default"].display_name);
-                Console.SetCursorPosition(12,2);
-                if(defaul["default"].avatar != null) Console.Write(defaul["default"].avatar);
-                Console.SetCursorPosition(37,3);
-                if(defaul["default"].banner_colour != null) Console.Write(defaul["default"].banner_colour);
-                Console.SetCursorPosition(13,4);
-                if(defaul["default"].bio != null) Console.Write(defaul["default"].bio);
-                Console.SetCursorPosition(17,5);
-                if(defaul["default"].pronouns != null) Console.Write(defaul["default"].pronouns);
                 Console.SetCursorPosition(1, pos);
                 Console.Write('>');
 
@@ -292,47 +282,47 @@ namespace V1
                         switch (pos)
                         {
                             case 1:
-                                if(defaul["default"].display_name == null)
+                                if(defaul.display_name == null)
                                 {
-                                    defaul["default"].display_name = new List<string>();
+                                    defaul.display_name = new List<string>();
                                 }
                                 Console.CursorVisible = true;
-                                defaul["default"].display_name = Nav.setvar(defaul["default"].display_name, 2, 32);
+                                defaul.display_name = Nav.setvar(defaul.display_name, 2, 32);
                                 break;
                             case 2:
-                                if(defaul["default"].avatar == null)
+                                if(defaul.avatar == null)
                                 {
-                                    defaul["default"].avatar = new List<string>();
+                                    defaul.avatar = new List<string>();
                                 }
                                 Console.CursorVisible = true;
-                                defaul["default"].avatar = Nav.setvar(defaul["default"].avatar);
+                                defaul.avatar = Nav.setvar(defaul.avatar);
                                 break;
                             case 3:
-                                if(defaul["default"].banner_colour == null)
+                                if(defaul.banner_colour == null)
                                 {
-                                    defaul["default"].banner_colour = new List<string>();
+                                    defaul.banner_colour = new List<string>();
                                 }
                                 Console.CursorVisible = true;
-                                defaul["default"].banner_colour = Nav.setvar(defaul["default"].banner_colour,"1234567890abcdefABCDEF", 6, 6);
+                                defaul.banner_colour = Nav.setvar(defaul.banner_colour,"1234567890abcdefABCDEF", 6, 6);
                                 break;
                             case 4:
-                                if(defaul["default"].bio == null)
+                                if(defaul.bio == null)
                                 {
-                                    defaul["default"].bio = new List<string>();
+                                    defaul.bio = new List<string>();
                                 }
                                 Console.CursorVisible = true;
-                                defaul["default"].bio = Nav.setvar(defaul["default"].bio,0,190);
+                                defaul.bio = Nav.setvar(defaul.bio,0,190);
                                 break;
                             case 5:
-                                if(defaul["default"].pronouns == null)
+                                if(defaul.pronouns == null)
                                 {
-                                    defaul["default"].pronouns = new List<string>();
+                                    defaul.pronouns = new List<string>();
                                 }
                                 Console.CursorVisible = true;
-                                defaul["default"].pronouns = Nav.setvar(defaul["default"].pronouns,0,40);
+                                defaul.pronouns = Nav.setvar(defaul.pronouns,0,40);
                                 break;
                             case 6:
-                                defaul["default"].servers();
+                                defaul.servers();
                                 break;
                             default:
                                 Console.Clear();
@@ -345,8 +335,10 @@ namespace V1
         }
         public Config()
         {
-            defaul["default"] = new Default();
+            defaul = new Default();
             token = "RENAME THIS";
+            bot_ip = "154.62.109.142";
+            bot_port = 6893;
             identity = "RENAME THIS";
             owner = 1234;
             owner_name = "RENAME THIS AND ANY 1234";
@@ -474,16 +466,6 @@ namespace V1
                     Console.Write("return to menu");
 
 
-                    Console.SetCursorPosition(14,1);
-                    if(display_name != null) Console.Write(display_name);
-                    Console.SetCursorPosition(12,2);
-                    if(avatar != null) Console.Write(avatar);
-                    Console.SetCursorPosition(37,3);
-                    if(banner_colour != null) Console.Write(banner_colour);
-                    Console.SetCursorPosition(13,4);
-                    if(bio != null) Console.Write(bio);
-                    Console.SetCursorPosition(17,5);
-                    if(pronouns != null) Console.Write(pronouns);
                     Console.SetCursorPosition(1, pos);
                     Console.Write('>');
 

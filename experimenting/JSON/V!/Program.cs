@@ -17,6 +17,7 @@ namespace V1
                 try
                 {
                     jsonStr = File.ReadAllText("config.json");
+                    jsonStr = jsonStr.Replace("\"default\": {", "\"defaul\": {");
                     config = JsonSerializer.Deserialize<Config>(jsonStr);
                     File.Delete("config.json");
                 }
@@ -32,6 +33,7 @@ namespace V1
             };
             writerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
             jsonStr = JsonSerializer.Serialize(config, writerOptions);
+            jsonStr = jsonStr.Replace("\"defaul\": {", "\"default\": {");
             Console.Write(jsonStr);
             
 

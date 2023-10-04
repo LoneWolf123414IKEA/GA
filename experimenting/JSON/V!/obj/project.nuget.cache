@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "vaN6qj5NBKtivpVoIFf8QVA5XBrCkkB7n7fPg53MFHLqGn20nhz1q54oHdAbGbIXQ871iOj6LgDnJGWoOlHL2g==",
+  "dgSpecHash": "/zYiqtKiDrHukta91/M1r3klfqmH9RkZ8ANCe1AkVTZy7DMQhUVhzpa8BGbxzA5AzLmncY9g89ShPmFApb185Q==",
   "success": true,
-  "projectFilePath": "I:\\git\\GA\\experimenting\\JSON\\V!\\V!.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\V!.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.runtime.linux-x64\\7.0.10\\microsoft.netcore.app.runtime.linux-x64.7.0.10.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.linux-x64\\7.0.10\\microsoft.aspnetcore.app.runtime.linux-x64.7.0.10.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.host.linux-x64\\7.0.10\\microsoft.netcore.app.host.linux-x64.7.0.10.nupkg.sha512"
+  ],
   "logs": []
 }
