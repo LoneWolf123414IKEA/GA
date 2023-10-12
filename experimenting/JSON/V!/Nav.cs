@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using Microsoft.VisualBasic;
 
 namespace V1
@@ -37,7 +38,7 @@ namespace V1
 
 
 
-                switch (Console.ReadKey(false).Key)
+                switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.Escape:
                         if(strings.Count == 0) return null;
@@ -121,9 +122,10 @@ namespace V1
                 }
             }
         }
-        public static List<string>? setvar(List<string> strings, int low = 0, int high = int.MaxValue)
+        public static List<string>? setvar(List<string> strings, int low = 0, int high = int.MaxValue, bool editor = false)
         {
             Console.Clear();
+            ConsoleKeyInfo key;
             int count;
             int pos = 1;
             string testvalue;
@@ -146,7 +148,7 @@ namespace V1
 
 
 
-                switch (Console.ReadKey(false).Key)
+                switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.Escape:
                         if(strings.Count == 0) return null;
@@ -173,7 +175,7 @@ namespace V1
                         break;
                     case ConsoleKey.Enter:
                     {
-                        if(pos <= count)
+                        if(pos <= count && !editor)
                         { 
                             testvalue = strings[pos-1];
                             while(true)
@@ -193,7 +195,54 @@ namespace V1
 
                             }
                         }
-                        if(pos == count + 1)
+                        else if(pos == count + 1 && !editor)
+                        {
+                            testvalue = "new";
+                            while(true)
+                            {
+                                Console.SetCursorPosition(3, pos);
+                                for(int i = testvalue.Length; i > 0; i--)
+                                {
+                                    Console.Write(" ");
+                                }
+                                Console.SetCursorPosition(3, pos);
+                                testvalue = Console.ReadLine();
+                                if(testvalue.Length <= high && testvalue.Length >= low)
+                                {
+                                    strings.Add(testvalue);
+                                    break;
+                                }
+
+                            }
+                            
+                        }
+                        else if(pos <= count && editor)
+                        { 
+                            testvalue = strings[pos-1];
+                            while(true)
+                            {
+                                Console.SetCursorPosition(3, 1);
+                                Console.Clear();
+                                while(true)
+                                {
+                                    key = Console.ReadKey(true);
+                                    if((key.Modifiers == ConsoleModifiers.Shift) && (key.Key == ConsoleKey.Enter)) break;
+                                    else if(key.Key == ConsoleKey.Enter) testvalue.Append('\n');
+                                    else if(key.Key == ConsoleKey.Backspace && testvalue.Length > 0) testvalue = testvalue.Remove(testvalue.Length - 1);
+                                    else testvalue.Append(key.KeyChar);
+                                    Console.Clear();
+                                    Console.SetCursorPosition(3, 1);
+                                    Console.Write(testvalue);
+                                }
+                                if(testvalue.Length <= high && testvalue.Length >= low)
+                                {
+                                    strings[pos-1] = testvalue;
+                                    break;
+                                }
+
+                            }
+                        }
+                        else if(pos == count + 1 && editor)
                         {
                             testvalue = "new";
                             while(true)
@@ -248,7 +297,7 @@ namespace V1
                 Console.Write("edit additional profile");
                 Console.SetCursorPosition(3, 5);
                 Console.Write("exit program");
-                switch (Console.ReadKey(false).Key)
+                switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.Escape:
                         return;

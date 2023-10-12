@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\V!.csproj": {}
+    "C:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\V!.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\V!.csproj": {
+    "C:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\V!.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\V!.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\V!.csproj",
         "projectName": "V!",
-        "projectPath": "c:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\V!.csproj",
+        "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\V!.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
