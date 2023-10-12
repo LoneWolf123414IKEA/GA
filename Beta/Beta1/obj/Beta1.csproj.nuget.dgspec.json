@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Documents\\GitHub\\GA\\Beta\\Beta1\\Beta1.csproj": {}
+    "c:\\Users\\Admin\\Documents\\GitHub\\GA\\Beta\\Beta1\\Beta1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Documents\\GitHub\\GA\\Beta\\Beta1\\Beta1.csproj": {
+    "c:\\Users\\Admin\\Documents\\GitHub\\GA\\Beta\\Beta1\\Beta1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\GA\\Beta\\Beta1\\Beta1.csproj",
+        "projectUniqueName": "c:\\Users\\Admin\\Documents\\GitHub\\GA\\Beta\\Beta1\\Beta1.csproj",
         "projectName": "Beta1",
-        "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\GA\\Beta\\Beta1\\Beta1.csproj",
+        "projectPath": "c:\\Users\\Admin\\Documents\\GitHub\\GA\\Beta\\Beta1\\Beta1.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\GA\\Beta\\Beta1\\obj\\",
+        "outputPath": "c:\\Users\\Admin\\Documents\\GitHub\\GA\\Beta\\Beta1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

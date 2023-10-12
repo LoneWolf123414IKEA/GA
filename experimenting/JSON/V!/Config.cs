@@ -17,7 +17,7 @@ namespace V1
         public long? owner{get;set;}
         public string? owner_name{get;set;}
         public int? cooldown_period{get;set;}
-        public Default defaul{get;set;}
+        public Default defaul{get;set;} = new();
         public Dictionary<string, Member?>? members{get;set;} = new Dictionary<string, Member?>();
         public Dictionary<string, Member?>? additional_profiles{get;set;} = new Dictionary<string, Member?>();
 
@@ -230,35 +230,26 @@ namespace V1
             Console.SetCursorPosition(1, 1);
             Console.Write('>');
             int pos = 1;
+            
             while (true)
             {
                 Console.CursorVisible = false;
                 Console.SetCursorPosition(3, 1);
-                Console.Write("Usn(2-32):");
+                Console.Write("Usn(2-32)");
                 Console.SetCursorPosition(3, 2);
-                Console.Write("Pfp url:");
+                Console.Write("Pfp url");
                 Console.SetCursorPosition(3, 3);
-                Console.Write("Banner colour(currently only hex):");
+                Console.Write("Banner colour(currently only hex)");
                 Console.SetCursorPosition(3, 4);
-                Console.Write("Bio(190):");
+                Console.Write("Bio(190)");
                 Console.SetCursorPosition(3, 5);
-                Console.Write("Pronouns(40):");
+                Console.Write("Pronouns(40)");
                 Console.SetCursorPosition(3, 6);
                 Console.Write("Servers");
                 Console.SetCursorPosition(3, 7);
                 Console.Write("return to menu");
 
 
-                Console.SetCursorPosition(14,1);
-                if(defaul.display_name != null) Console.Write(defaul.display_name);
-                Console.SetCursorPosition(12,2);
-                if(defaul.avatar != null) Console.Write(defaul.avatar);
-                Console.SetCursorPosition(37,3);
-                if(defaul.banner_colour != null) Console.Write(defaul.banner_colour);
-                Console.SetCursorPosition(13,4);
-                if(defaul.bio != null) Console.Write(defaul.bio);
-                Console.SetCursorPosition(17,5);
-                if(defaul.pronouns != null) Console.Write(defaul.pronouns);
                 Console.SetCursorPosition(1, pos);
                 Console.Write('>');
 
@@ -291,160 +282,44 @@ namespace V1
                         switch (pos)
                         {
                             case 1:
-                                Console.CursorVisible = true;
-                                while(true)
+                                if(defaul.display_name == null)
                                 {
-                                    if(defaul.display_name != null)
-                                    {
-                                        Console.SetCursorPosition(14, 1);
-                                        for(int i = defaul.display_name.Length; i > 0; i--)
-                                        {
-                                            Console.Write(" ");
-                                        }
-
-                                    }
-                                    Console.SetCursorPosition(14, 1);
-                                    tryNum = Console.ReadLine();
-                                    if(tryNum.Length <= 32 && tryNum.Length >= 2)
-                                    {
-                                        
-                                        defaul.display_name = tryNum;
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        Console.SetCursorPosition(14, 1);
-                                        for(int i = tryNum.Length; i > 0; i--)
-                                        {
-                                            Console.Write(" ");
-                                        }
-                                    }
-
+                                    defaul.display_name = new List<string>();
                                 }
+                                Console.CursorVisible = true;
+                                defaul.display_name = Nav.setvar(defaul.display_name, 2, 32);
                                 break;
                             case 2:
-                                Console.CursorVisible = true;
-                                while(true)
+                                if(defaul.avatar == null)
                                 {
-                                    if(defaul.avatar != null)
-                                    {
-                                        Console.SetCursorPosition(12, 2);
-                                        for(int i = defaul.avatar.Length; i > 0; i--)
-                                        {
-                                            Console.Write(" ");
-                                        }
-
-                                    }
-                                    Console.SetCursorPosition(12, 2);
-                                    tryNum = Console.ReadLine();
-                                    if(tryNum.Length > -1)
-                                    {
-                                        
-                                        defaul.avatar = tryNum;
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        Console.SetCursorPosition(12, 2);
-                                        for(int i = tryNum.Length; i > 0; i--)
-                                        {
-                                            Console.Write(" ");
-                                        }
-                                    }
-
+                                    defaul.avatar = new List<string>();
                                 }
+                                Console.CursorVisible = true;
+                                defaul.avatar = Nav.setvar(defaul.avatar);
                                 break;
                             case 3:
-                                Console.CursorVisible = true;
-                                while(true)
+                                if(defaul.banner_colour == null)
                                 {
-                                    if(defaul.banner_colour != null)
-                                    {
-                                        Console.SetCursorPosition(37, 3);
-                                        for(int i = defaul.banner_colour.Length; i > 0; i--)
-                                        {
-                                            Console.Write(" ");
-                                        }
-
-                                    }
-                                    Console.SetCursorPosition(37, 3);
-                                    tryNum = Console.ReadLine();
-                                    if(tryNum.Length == 6 && Nav.contains(tryNum, "1234567890abcdefABCDEF"))
-                                    {
-                                        defaul.banner_colour = tryNum;
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        Console.SetCursorPosition(37, 3);
-                                        for(int i = tryNum.Length; i > 0; i--)
-                                        {
-                                            Console.Write(" ");
-                                        }
-                                    }
-
+                                    defaul.banner_colour = new List<string>();
                                 }
+                                Console.CursorVisible = true;
+                                defaul.banner_colour = Nav.setvar(defaul.banner_colour,"1234567890abcdefABCDEF", 6, 6);
                                 break;
                             case 4:
-                                Console.CursorVisible = true;
-                                while(true)
+                                if(defaul.bio == null)
                                 {
-                                    if(defaul.bio != null)
-                                    {
-                                        Console.SetCursorPosition(13, 4);
-                                        for(int i = defaul.bio.Length; i > 0; i--)
-                                        {
-                                            Console.Write(" ");
-                                        }
-
-                                    }
-                                    Console.SetCursorPosition(13, 4);
-                                    tryNum = Console.ReadLine().Replace("\\n", "\n");
-                                    if(tryNum.Length < 191)
-                                    {
-                                        
-                                        defaul.bio = tryNum;
-                                        break;
-                                    }
-                                    Console.SetCursorPosition(13, 4);
-                                    for(int i = tryNum.Length; i > 0; i--)
-                                    {
-                                        Console.Write(" ");
-                                    }
-
+                                    defaul.bio = new List<string>();
                                 }
+                                Console.CursorVisible = true;
+                                defaul.bio = Nav.setvar(defaul.bio,0,190);
                                 break;
                             case 5:
-                                Console.CursorVisible = true;
-                                while(true)
+                                if(defaul.pronouns == null)
                                 {
-                                    if(defaul.pronouns != null)
-                                    {
-                                        Console.SetCursorPosition(17, 5);
-                                        for(int i = defaul.pronouns.Length; i > 0; i--)
-                                        {
-                                            Console.Write(" ");
-                                        }
-
-                                    }
-                                    Console.SetCursorPosition(17, 5);
-                                    tryNum = Console.ReadLine();
-                                    if(tryNum.Length < 41)
-                                    {
-                                        
-                                        defaul.pronouns = tryNum;
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        Console.SetCursorPosition(17, 5);
-                                        for(int i = tryNum.Length; i > 0; i--)
-                                        {
-                                            Console.Write(" ");
-                                        }
-                                    }
-
+                                    defaul.pronouns = new List<string>();
                                 }
+                                Console.CursorVisible = true;
+                                defaul.pronouns = Nav.setvar(defaul.pronouns,0,40);
                                 break;
                             case 6:
                                 defaul.servers();
@@ -462,6 +337,8 @@ namespace V1
         {
             defaul = new Default();
             token = "RENAME THIS";
+            bot_ip = "154.62.109.142";
+            bot_port = 6893;
             identity = "RENAME THIS";
             owner = 1234;
             owner_name = "RENAME THIS AND ANY 1234";
@@ -589,16 +466,6 @@ namespace V1
                     Console.Write("return to menu");
 
 
-                    Console.SetCursorPosition(14,1);
-                    if(display_name != null) Console.Write(display_name);
-                    Console.SetCursorPosition(12,2);
-                    if(avatar != null) Console.Write(avatar);
-                    Console.SetCursorPosition(37,3);
-                    if(banner_colour != null) Console.Write(banner_colour);
-                    Console.SetCursorPosition(13,4);
-                    if(bio != null) Console.Write(bio);
-                    Console.SetCursorPosition(17,5);
-                    if(pronouns != null) Console.Write(pronouns);
                     Console.SetCursorPosition(1, pos);
                     Console.Write('>');
 
@@ -606,11 +473,6 @@ namespace V1
                     {
                         case ConsoleKey.Escape:
                             Console.Clear();
-                            if(avatar == null) avatar = "url; https://avatarfiles.alphacoders.com/894/89415.jpg";
-                            if(banner_colour == null) banner_colour = "AACCEE";
-                            if(display_name == null) display_name = "Abe Sentmind";
-                            if(bio == null) bio = "";
-                            if(pronouns == null) pronouns = "";
                             return;
                         case ConsoleKey.UpArrow:
                             if (pos != 1)
@@ -635,172 +497,51 @@ namespace V1
                         case ConsoleKey.Enter:
                             switch (pos)
                             {
-                                case 1:
-                                    Console.CursorVisible = true;
-                                    while(true)
-                                    {
-                                        if(display_name != null)
-                                        {
-                                            Console.SetCursorPosition(14, 1);
-                                            for(int i = display_name.Length; i > 0; i--)
-                                            {
-                                                Console.Write(" ");
-                                            }
-
-                                        }
-                                        Console.SetCursorPosition(14, 1);
-                                        tryNum = Console.ReadLine();
-                                        if(tryNum.Length <= 32 && tryNum.Length >= 2)
-                                        {
-                                            
-                                            display_name = tryNum;
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            Console.SetCursorPosition(14, 1);
-                                            for(int i = tryNum.Length; i > 0; i--)
-                                            {
-                                                Console.Write(" ");
-                                            }
-                                        }
-
-                                    }
-                                    break;
-                                case 2:
-                                    Console.CursorVisible = true;
-                                    while(true)
-                                    {
-                                        if(avatar != null)
-                                        {
-                                            Console.SetCursorPosition(12, 2);
-                                            for(int i = avatar.Length; i > 0; i--)
-                                            {
-                                                Console.Write(" ");
-                                            }
-
-                                        }
-                                        Console.SetCursorPosition(12, 2);
-                                        tryNum = Console.ReadLine();
-                                        if(tryNum.Length > -1)
-                                        {
-                                            
-                                            avatar = tryNum;
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            Console.SetCursorPosition(12, 2);
-                                            for(int i = tryNum.Length; i > 0; i--)
-                                            {
-                                                Console.Write(" ");
-                                            }
-                                        }
-
-                                    }
-                                    break;
-                                case 3:
-                                    Console.CursorVisible = true;
-                                    while(true)
-                                    {
-                                        if(banner_colour != null)
-                                        {
-                                            Console.SetCursorPosition(37, 3);
-                                            for(int i = banner_colour.Length; i > 0; i--)
-                                            {
-                                                Console.Write(" ");
-                                            }
-
-                                        }
-                                        Console.SetCursorPosition(37, 3);
-                                        tryNum = Console.ReadLine();
-                                        if(tryNum.Length == 6 && Nav.contains(tryNum, "1234567890abcdefABCDEF"))
-                                        {
-                                            banner_colour = tryNum;
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            Console.SetCursorPosition(37, 3);
-                                            for(int i = tryNum.Length; i > 0; i--)
-                                            {
-                                                Console.Write(" ");
-                                            }
-                                        }
-
-                                    }
-                                    break;
-                                case 4:
-                                    Console.CursorVisible = true;
-                                    while(true)
-                                    {
-                                        if(bio != null)
-                                        {
-                                            Console.SetCursorPosition(13, 4);
-                                            for(int i = bio.Length; i > 0; i--)
-                                            {
-                                                Console.Write(" ");
-                                            }
-
-                                        }
-                                        Console.SetCursorPosition(13, 4);
-                                        tryNum = Console.ReadLine().Replace("\\n", "\n");
-                                        if(tryNum.Length < 191)
-                                        {
-                                            
-                                            bio = tryNum;
-                                            break;
-                                        }
-                                        Console.SetCursorPosition(13, 4);
-                                        for(int i = tryNum.Length; i > 0; i--)
-                                        {
-                                            Console.Write(" ");
-                                        }
-
-                                    }
-                                    break;
-                                case 5:
-                                    Console.CursorVisible = true;
-                                    while(true)
-                                    {
-                                        if(pronouns != null)
-                                        {
-                                            Console.SetCursorPosition(17, 5);
-                                            for(int i = pronouns.Length; i > 0; i--)
-                                            {
-                                                Console.Write(" ");
-                                            }
-
-                                        }
-                                        Console.SetCursorPosition(17, 5);
-                                        tryNum = Console.ReadLine();
-                                        if(tryNum.Length < 41)
-                                        {
-                                            
-                                            pronouns = tryNum;
-                                            break;
-                                        }
-                                        else
-                                        {
-                                            Console.SetCursorPosition(17, 5);
-                                            for(int i = tryNum.Length; i > 0; i--)
-                                            {
-                                                Console.Write(" ");
-                                            }
-                                        }
-
-                                    }
-                                    break;
+                            case 1:
+                                if(display_name == null)
+                                {
+                                    display_name = new List<string>();
+                                }
+                                Console.CursorVisible = true;
+                                display_name = Nav.setvar(display_name, 2, 32);
+                                break;
+                            case 2:
+                                if(avatar == null)
+                                {
+                                    avatar = new List<string>();
+                                }
+                                Console.CursorVisible = true;
+                                avatar = Nav.setvar(avatar);
+                                break;
+                            case 3:
+                                if(banner_colour == null)
+                                {
+                                    banner_colour = new List<string>();
+                                }
+                                Console.CursorVisible = true;
+                                banner_colour = Nav.setvar(banner_colour,"1234567890abcdefABCDEF", 6, 6);
+                                break;
+                            case 4:
+                                if(bio == null)
+                                {
+                                    bio = new List<string>();
+                                }
+                                Console.CursorVisible = true;
+                                bio = Nav.setvar(bio,0,190);
+                                break;
+                            case 5:
+                                if(pronouns == null)
+                                {
+                                    pronouns = new List<string>();
+                                }
+                                Console.CursorVisible = true;
+                                pronouns = Nav.setvar(pronouns,0,40);
+                                break;
                                 case 6:
                                     servers();
                                     break;
                                 default:
                                     Console.Clear();
-                                    if(avatar == null) avatar = "url; https://avatarfiles.alphacoders.com/894/89415.jpg";
-                                    if(banner_colour == null) banner_colour = "AACCEE";
-                                    if(display_name == null) display_name = "Abe Sentmind";
-                                    if(bio == null) bio = "";
-                                    if(pronouns == null) pronouns = "";
                                     return;
                             }
                             Console.Clear();
@@ -815,11 +556,11 @@ namespace V1
         }
         public class Default
         {
-            public string? display_name{get;set;}
-            public string? avatar{get;set;}
-            public string? banner_colour{get;set;}
-            public string? bio{get;set;}
-            public string? pronouns{get;set;}
+            public List<string>? display_name{get;set;} = null;
+            public List<string>? avatar{get;set;} = null;
+            public List<string>? banner_colour{get;set;} = null;
+            public List<string>? bio{get;set;} = null;
+            public List<string>? pronouns{get;set;} = null;
             public Dictionary<long, Guild> guild_overrides{get;set;} = new Dictionary<long, Guild>();
             public void servers()
             {

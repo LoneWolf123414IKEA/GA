@@ -1,26 +1,27 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {},
+    "net7.0/ubuntu.16.04-x64": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Pontus\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "I:\\git\\GA\\experimenting\\JSON\\V!\\V!.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\V!.csproj",
       "projectName": "V!",
-      "projectPath": "I:\\git\\GA\\experimenting\\JSON\\V!\\V!.csproj",
-      "packagesPath": "C:\\Users\\Pontus\\.nuget\\packages\\",
-      "outputPath": "I:\\git\\GA\\experimenting\\JSON\\V!\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\V!.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\GA\\experimenting\\JSON\\V!\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Pontus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -56,12 +57,31 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
+            "version": "[7.0.10, 7.0.10]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.linux-x64",
+            "version": "[7.0.10, 7.0.10]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Runtime.linux-x64",
+            "version": "[7.0.10, 7.0.10]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+      }
+    },
+    "runtimes": {
+      "ubuntu.16.04-x64": {
+        "#import": []
       }
     }
   }
