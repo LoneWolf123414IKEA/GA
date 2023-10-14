@@ -61,7 +61,7 @@ namespace V1
                 Console.SetCursorPosition(22,6);
                 if(cooldown_period != null) Console.Write(cooldown_period);
 
-                switch (Console.ReadKey(false).Key)
+                switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.Escape:
                         Console.Clear();
@@ -253,7 +253,7 @@ namespace V1
                 Console.SetCursorPosition(1, pos);
                 Console.Write('>');
 
-                switch (Console.ReadKey(false).Key)
+                switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.Escape:
                         Console.Clear();
@@ -380,7 +380,7 @@ namespace V1
                     Console.Write("Return");
                     Console.SetCursorPosition(1, pos);
                     Console.Write('>');
-                    switch (Console.ReadKey(false).Key)
+                    switch (Console.ReadKey(true).Key)
                     {
                         case ConsoleKey.Escape:
                             return;
@@ -469,7 +469,7 @@ namespace V1
                     Console.SetCursorPosition(1, pos);
                     Console.Write('>');
 
-                    switch (Console.ReadKey(false).Key)
+                    switch (Console.ReadKey(true).Key)
                     {
                         case ConsoleKey.Escape:
                             Console.Clear();
@@ -527,7 +527,7 @@ namespace V1
                                     bio = new List<string>();
                                 }
                                 Console.CursorVisible = true;
-                                bio = Nav.setvar(bio,0,190);
+                                bio = Nav.setvar(bio,0,190,true);
                                 break;
                             case 5:
                                 if(pronouns == null)
@@ -583,7 +583,7 @@ namespace V1
                     Console.Write("Return");
                     Console.SetCursorPosition(1, pos);
                     Console.Write('>');
-                    switch (Console.ReadKey(false).Key)
+                    switch (Console.ReadKey(true).Key)
                     {
                         case ConsoleKey.Escape:
                             return;
@@ -681,7 +681,7 @@ namespace V1
                         if(pronouns != null) Console.Write(pronouns);
                         Console.SetCursorPosition(1, pos);
                         Console.Write('>');
-                        switch (Console.ReadKey(false).Key)
+                        switch (Console.ReadKey(true).Key)
                         {
                             case ConsoleKey.Escape:
                                 return;
@@ -868,7 +868,7 @@ namespace V1
                                             else Console.Write(" X ");
                                             Console.SetCursorPosition(1, pos2);
                                             Console.Write('>');
-                                            switch (Console.ReadKey(false).Key)
+                                            switch (Console.ReadKey(true).Key)
                                             {
                                                 case ConsoleKey.Escape:
                                                     return;
@@ -951,7 +951,7 @@ namespace V1
 
 
 
-                                                                switch (Console.ReadKey(false).Key)
+                                                                switch (Console.ReadKey(true).Key)
                                                                 {
                                                                     case ConsoleKey.Escape:
                                                                         return;
@@ -1105,7 +1105,7 @@ namespace V1
 
 
 
-                                switch (Console.ReadKey(false).Key)
+                                switch (Console.ReadKey(true).Key)
                                 {
                                     case ConsoleKey.Escape:
                                         return ret;

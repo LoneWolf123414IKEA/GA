@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "token": "RENAME THIS",
+  "identity": "RENAME THIS",
+  "bot_ip": "154.62.109.142",
+  "bot_port": 6893,
+  "owner": 1234,
+  "owner_name": "RENAME THIS AND ANY 1234",
+  "cooldown_period": 60,
+  "default": {
+    "guild_overrides": {}
+  },
+  "members": {
+    "3123": {
+      "bio": [
+        "ad"
+      ],
+      "guild_overrides": {}
+    }
+  },
+  "additional_profiles": {}
+}
