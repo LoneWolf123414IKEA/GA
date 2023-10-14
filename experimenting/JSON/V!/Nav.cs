@@ -135,7 +135,7 @@ namespace V1
                 foreach (string i in strings)
                 {
                     Console.SetCursorPosition(3, count + 1);
-                    Console.Write(i);
+                    Console.Write(i.Replace("\n", "\\n"));
                     count++;
                 }
                 Console.SetCursorPosition(3, count+1);
@@ -225,14 +225,21 @@ namespace V1
                                 Console.Clear();
                                 while(true)
                                 {
+                                    Console.SetCursorPosition(Console.WindowWidth-3, Console.WindowHeight-1);
+                                    Console.Write(testvalue.Length);
+                                    Console.SetCursorPosition(0, 1);
+                                    Console.Write(testvalue);
                                     key = Console.ReadKey(true);
                                     if((key.Modifiers == ConsoleModifiers.Shift) && (key.Key == ConsoleKey.Enter)) break;
-                                    else if(key.Key == ConsoleKey.Enter) testvalue.Append('\n');
-                                    else if(key.Key == ConsoleKey.Backspace && testvalue.Length > 0) testvalue = testvalue.Remove(testvalue.Length - 1);
-                                    else testvalue.Append(key.KeyChar);
-                                    Console.Clear();
-                                    Console.SetCursorPosition(3, 1);
-                                    Console.Write(testvalue);
+                                    else if(key.Key == ConsoleKey.Backspace && testvalue.Length > 0) 
+                                    {
+                                        testvalue = testvalue.Remove(testvalue.Length - 1);
+                                        Console.Clear();
+                                    } 
+                                    else if(testvalue.Length >= 190);
+                                    else if(key.Key == ConsoleKey.Enter) testvalue += "\n";
+                                    
+                                    else testvalue = testvalue + key.KeyChar.ToString();
                                 }
                                 if(testvalue.Length <= high && testvalue.Length >= low)
                                 {

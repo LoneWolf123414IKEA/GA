@@ -8,15 +8,12 @@
   "owner_name": "RENAME THIS AND ANY 1234",
   "cooldown_period": 60,
   "default": {
+    "bio": [
+      "saddsadasndljn,mfb,.dfb\naf\nas\nf\n\n\n",
+      "asdasdasd\n\nasdasd\n\n                                    Console.Clear();\n"
+    ],
     "guild_overrides": {}
   },
-  "members": {
-    "3123": {
-      "bio": [
-        "ad"
-      ],
-      "guild_overrides": {}
-    }
-  },
+  "members": {},
   "additional_profiles": {}
 }

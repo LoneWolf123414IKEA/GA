@@ -9,7 +9,7 @@ namespace V1
 {
     public class Config
     {
-        public int version{get;set;} = 1;
+        public int version{get;set;} = 2;
         public string? token{get; set;}
         public string? identity{get;set;}
         public string? bot_ip{get;set;}
@@ -311,7 +311,7 @@ namespace V1
                                     defaul.bio = new List<string>();
                                 }
                                 Console.CursorVisible = true;
-                                defaul.bio = Nav.setvar(defaul.bio,0,190);
+                                defaul.bio = Nav.setvar(defaul.bio,0,190,true);
                                 break;
                             case 5:
                                 if(defaul.pronouns == null)
