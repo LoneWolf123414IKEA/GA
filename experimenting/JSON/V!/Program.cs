@@ -11,6 +11,9 @@ namespace V1
         public static Config config = new Config();
         public static void Main()
         {
+
+            Console.SetWindowSize(160, 60);
+            Nav.Err("0100");
             string jsonStr;
             if(File.Exists("config.json"))
             {

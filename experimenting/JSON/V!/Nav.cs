@@ -1,3 +1,4 @@
+using System.Security.AccessControl;
 using System.Security.Cryptography;
 using Microsoft.VisualBasic;
 
@@ -251,16 +252,29 @@ namespace V1
                         }
                         else if(pos == count + 1 && editor)
                         {
-                            testvalue = "new";
+                            testvalue = "";
                             while(true)
                             {
-                                Console.SetCursorPosition(3, pos);
-                                for(int i = testvalue.Length; i > 0; i--)
+                                Console.SetCursorPosition(3, 1);
+                                Console.Clear();
+                                while(true)
                                 {
-                                    Console.Write(" ");
+                                    Console.SetCursorPosition(Console.WindowWidth-3, Console.WindowHeight-1);
+                                    Console.Write(testvalue.Length);
+                                    Console.SetCursorPosition(0, 1);
+                                    Console.Write(testvalue);
+                                    key = Console.ReadKey(true);
+                                    if((key.Modifiers == ConsoleModifiers.Shift) && (key.Key == ConsoleKey.Enter)) break;
+                                    else if(key.Key == ConsoleKey.Backspace && testvalue.Length > 0) 
+                                    {
+                                        testvalue = testvalue.Remove(testvalue.Length - 1);
+                                        Console.Clear();
+                                    } 
+                                    else if(testvalue.Length >= 190);
+                                    else if(key.Key == ConsoleKey.Enter) testvalue += "\n";
+                                    
+                                    else testvalue = testvalue + key.KeyChar.ToString();
                                 }
-                                Console.SetCursorPosition(3, pos);
-                                testvalue = Console.ReadLine();
                                 if(testvalue.Length <= high && testvalue.Length >= low)
                                 {
                                     strings.Add(testvalue);
@@ -350,6 +364,62 @@ namespace V1
                         break;
                 }
             }
+        }
+        public static readonly int[] exitErrors = 
+        {
+            0000,
+            0042
+        };
+        public static readonly string[] ints =
+        {   
+           "0011100200111002010111020101110211001112110011121100011211000112110011121100111211010112110101121110011211100112110001121100011211100112111001120111010201110102001110020011100",
+           "0000100200001002000110020001100200111002001110020001100200011002000110020001100200011002000110020001100200011002000110020001100200011002000110020001100200011002001111020011110"
+        };
+        public static void Err(string code)
+        {
+            Console.Clear();
+            Console.SetCursorPosition(6,0);
+            foreach (char i in code)
+            {
+                switch (i)
+                {
+                    case '0':
+                        foreach (char c in ints[0])
+                        {
+                            if (c == '0') Console.Write("    ");
+                            else if (c == '1') Console.Write("[][]");
+                            else Console.SetCursorPosition(Console.CursorLeft - 28, Console.CursorTop+1);
+                        }
+                        break;
+                    case '1':
+                        foreach (char c in ints[1])
+                        {
+                            if (c == '0') Console.Write("    ");
+                            else if (c == '1') Console.Write("[][]");
+                            else Console.SetCursorPosition(Console.CursorLeft - 28, Console.CursorTop+1);
+                        }
+                        break;
+                    case '2':
+                        break;
+                    case '3':
+                        break;
+                    case '4':
+                        break;
+                    case '5':
+                        break;
+                    case '6':
+                        break;
+                    case '7':
+                        break;
+                    case '8':
+                        break;
+                    case '9':
+                        break;
+                }
+                if (Console.cursorleft <  147) Console.SetCursorPosition(Console.CursorLeft + 12, 0);
+            }
+            Console.Read();
+            return;
         }
     }
 }
