@@ -25,41 +25,20 @@ namespace V1
         {
             Console.Clear();
             Console.CursorVisible = false;
-            Console.SetCursorPosition(1, 1);
-            Console.Write('>');
+            Nav.Arrow(1);
             int pos = 1;
             string tryNum;
             while (true)
             {
                 Console.CursorVisible = false;
-                Console.SetCursorPosition(3, 1);
-                Console.Write("Token:");
-                Console.SetCursorPosition(3, 2);
-                Console.Write("IP (you shuld never have to change this):");
-                Console.SetCursorPosition(3, 3);
-                Console.Write("Port (you shuld never have to change this):");
-                Console.SetCursorPosition(3, 4);
-                Console.Write("Account ID:");
-                Console.SetCursorPosition(3, 5);
-                Console.Write("System Name:");
-                Console.SetCursorPosition(3, 6);
-                Console.Write("Default time(min):");
-                Console.SetCursorPosition(3, 7);
-                Console.Write("return to menu");
 
-
-                Console.SetCursorPosition(10,1);
-                if(token != null) Console.Write(token);
-                Console.SetCursorPosition(45,2);
-                if(bot_ip != null) Console.Write(bot_ip);
-                Console.SetCursorPosition(47,3);
-                if(bot_port != null) Console.Write(bot_port);
-                Console.SetCursorPosition(15,4);
-                if(owner != null) Console.Write(owner);
-                Console.SetCursorPosition(16,5);
-                if(owner_name != null) Console.Write(owner_name);
-                Console.SetCursorPosition(22,6);
-                if(cooldown_period != null) Console.Write(cooldown_period);
+                Nav.NotNull(3, 1, token, "Token:");
+                Nav.NotNull(3, 2, bot_ip, "IP (you shuld never have to change this):");
+                Nav.NotNull(3, 3, bot_port, "Port (you shuld never have to change this):");
+                Nav.NotNull(3, 4, owner, "Account ID:");
+                Nav.NotNull(3, 5, owner_name, "System Name:");
+                Nav.NotNull(3, 6, cooldown_period, "Default time(min):");
+                Nav.NotNull(3, 7, "", "return to menu");
 
                 switch (Console.ReadKey(true).Key)
                 {
@@ -67,24 +46,10 @@ namespace V1
                         Console.Clear();
                         return;
                     case ConsoleKey.UpArrow:
-                        if (pos != 1)
-                        {
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write(' ');
-                            pos--;
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write('>');
-                        }
+                        Nav.ArrowUp(ref pos, 1);
                         break;
                     case ConsoleKey.DownArrow:
-                        if (pos != 7)
-                        {
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write(' ');
-                            pos++;
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write('>');
-                        }
+                        Nav.ArrowDown(ref pos, 7);
                         break;
                     case ConsoleKey.Enter:
                         switch (pos)
@@ -233,25 +198,16 @@ namespace V1
             
             while (true)
             {
-                Console.CursorVisible = false;
-                Console.SetCursorPosition(3, 1);
-                Console.Write("Usn(2-32)");
-                Console.SetCursorPosition(3, 2);
-                Console.Write("Pfp url");
-                Console.SetCursorPosition(3, 3);
-                Console.Write("Banner colour(currently only hex)");
-                Console.SetCursorPosition(3, 4);
-                Console.Write("Bio(190)");
-                Console.SetCursorPosition(3, 5);
-                Console.Write("Pronouns(40)");
-                Console.SetCursorPosition(3, 6);
-                Console.Write("Servers");
-                Console.SetCursorPosition(3, 7);
-                Console.Write("return to menu");
+                Nav.Promt(3, 1, "Usn(2-32)");
+                Nav.Promt(3, 2, "Pfp url");
+                Nav.Promt(3, 3, "Banner colour(currently only hex)");
+                Nav.Promt(3, 4, "Bio(190)");
+                Nav.Promt(3, 5, "Pronouns(40)");
+                Nav.Promt(3, 6, "Servers");
+                Nav.Promt(3, 7, "return to menu");
 
 
-                Console.SetCursorPosition(1, pos);
-                Console.Write('>');
+                Nav.Arrow(pos);
 
                 switch (Console.ReadKey(true).Key)
                 {
@@ -259,24 +215,10 @@ namespace V1
                         Console.Clear();
                         return;
                     case ConsoleKey.UpArrow:
-                        if (pos != 1)
-                        {
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write(' ');
-                            pos--;
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write('>');
-                        }
+                        Nav.ArrowUp(ref pos, 1);
                         break;
                     case ConsoleKey.DownArrow:
-                        if (pos != 7)
-                        {
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write(' ');
-                            pos++;
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write('>');
-                        }
+                        Nav.ArrowDown(ref pos, 7);
                         break;
                     case ConsoleKey.Enter:
                         switch (pos)
@@ -374,35 +316,21 @@ namespace V1
                         }
                         
                     }
-                    Console.SetCursorPosition(3, count);
-                    Console.Write("New");
-                    Console.SetCursorPosition(3, count+1);
-                    Console.Write("Return");
-                    Console.SetCursorPosition(1, pos);
-                    Console.Write('>');
+
+                    Nav.Promt(3, count, "New");
+                    Nav.Promt(3, count + 1, "Return");
+                    Nav.Arrow(pos);
+
+
                     switch (Console.ReadKey(true).Key)
                     {
                         case ConsoleKey.Escape:
                             return;
                         case ConsoleKey.UpArrow:
-                            if (pos != 1)
-                            {
-                                Console.SetCursorPosition(1, pos);
-                                Console.Write(' ');
-                                pos--;
-                                Console.SetCursorPosition(1, pos);
-                                Console.Write('>');
-                            }
+                            Nav.ArrowUp(ref pos, 1);
                             break;
                         case ConsoleKey.DownArrow:
-                            if (pos != count+1)
-                            {
-                                Console.SetCursorPosition(1, pos);
-                                Console.Write(' ');
-                                pos++;
-                                Console.SetCursorPosition(1, pos);
-                                Console.Write('>');
-                            }
+                            Nav.ArrowDown(ref pos, count + 1);
                             break;
                         case ConsoleKey.Enter:
                             if (pos == count)
@@ -430,8 +358,7 @@ namespace V1
                                 Program.config.additional_profiles.Values.ElementAt(pos-1).editMember();
                             }
                             Console.Clear();
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write('>');
+                            Nav.Arrow(pos);
                             break;
                     }
                 }
@@ -465,9 +392,10 @@ namespace V1
                     Console.SetCursorPosition(3, 7);
                     Console.Write("return to menu");
 
+                    Nav.Promt(3, 1, "Usn(2-32):");
 
-                    Console.SetCursorPosition(1, pos);
-                    Console.Write('>');
+
+                    Nav.Arrow(pos);
 
                     switch (Console.ReadKey(true).Key)
                     {
@@ -475,24 +403,10 @@ namespace V1
                             Console.Clear();
                             return;
                         case ConsoleKey.UpArrow:
-                            if (pos != 1)
-                            {
-                                Console.SetCursorPosition(1, pos);
-                                Console.Write(' ');
-                                pos--;
-                                Console.SetCursorPosition(1, pos);
-                                Console.Write('>');
-                            }
+                            Nav.ArrowUp(ref pos, 1);
                             break;
                         case ConsoleKey.DownArrow:
-                            if (pos != 7)
-                            {
-                                Console.SetCursorPosition(1, pos);
-                                Console.Write(' ');
-                                pos++;
-                                Console.SetCursorPosition(1, pos);
-                                Console.Write('>');
-                            }
+                            Nav.ArrowDown(ref pos, 7);
                             break;
                         case ConsoleKey.Enter:
                             switch (pos)
@@ -581,31 +495,16 @@ namespace V1
                     Console.Write("New");
                     Console.SetCursorPosition(3, count+1);
                     Console.Write("Return");
-                    Console.SetCursorPosition(1, pos);
-                    Console.Write('>');
+                    Nav.Arrow(pos);
                     switch (Console.ReadKey(true).Key)
                     {
                         case ConsoleKey.Escape:
                             return;
                         case ConsoleKey.UpArrow:
-                            if (pos != 1)
-                            {
-                                Console.SetCursorPosition(1, pos);
-                                Console.Write(' ');
-                                pos--;
-                                Console.SetCursorPosition(1, pos);
-                                Console.Write('>');
-                            }
+                            Nav.ArrowUp(ref pos, 1);
                             break;
                         case ConsoleKey.DownArrow:
-                            if (pos != count+1)
-                            {
-                                Console.SetCursorPosition(1, pos);
-                                Console.Write(' ');
-                                pos++;
-                                Console.SetCursorPosition(1, pos);
-                                Console.Write('>');
-                            }
+                            Nav.ArrowDown(ref pos, count + 1);
                             break;
                         case ConsoleKey.Enter:
                             if (pos == count)
@@ -637,8 +536,7 @@ namespace V1
                                 guild_overrides.Values.ElementAt(pos-1).setGuild();
                             }
                             Console.Clear();
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write('>');
+                            Nav.Arrow(pos);
                             break;
                     }
                 }
@@ -679,31 +577,16 @@ namespace V1
                         if(display_name != null) Console.Write(display_name);
                         Console.SetCursorPosition(17,2);
                         if(pronouns != null) Console.Write(pronouns);
-                        Console.SetCursorPosition(1, pos);
-                        Console.Write('>');
+                        Nav.Arrow(pos);
                         switch (Console.ReadKey(true).Key)
                         {
                             case ConsoleKey.Escape:
                                 return;
                             case ConsoleKey.UpArrow:
-                                if (pos != 1)
-                                {
-                                    Console.SetCursorPosition(1, pos);
-                                    Console.Write(' ');
-                                    pos--;
-                                    Console.SetCursorPosition(1, pos);
-                                    Console.Write('>');
-                                }
+                            Nav.ArrowUp(ref pos, 1);
                                 break;
                             case ConsoleKey.DownArrow:
-                                if (pos != 4)
-                                {
-                                    Console.SetCursorPosition(1, pos);
-                                    Console.Write(' ');
-                                    pos++;
-                                    Console.SetCursorPosition(1, pos);
-                                    Console.Write('>');
-                                }
+                            Nav.ArrowDown(ref pos, 4);
                                 break;
                             case ConsoleKey.Enter:
                                 switch(pos)
@@ -873,24 +756,10 @@ namespace V1
                                                 case ConsoleKey.Escape:
                                                     return;
                                                 case ConsoleKey.UpArrow:
-                                                    if (pos2 != 1)
-                                                    {
-                                                        Console.SetCursorPosition(1, pos2);
-                                                        Console.Write(' ');
-                                                        pos2--;
-                                                        Console.SetCursorPosition(1, pos2);
-                                                        Console.Write('>');
-                                                    }
+                                                    Nav.ArrowUp(ref pos2, 1);
                                                     break;
                                                 case ConsoleKey.DownArrow:
-                                                    if (pos2 != 9)
-                                                    {
-                                                        Console.SetCursorPosition(1, pos2);
-                                                        Console.Write(' ');
-                                                        pos2++;
-                                                        Console.SetCursorPosition(1, pos2);
-                                                        Console.Write('>');
-                                                    }
+                                                    Nav.ArrowDown(ref pos2, 9);
                                                     break;
                                                 case ConsoleKey.Enter:
                                                     switch(pos2)
@@ -945,8 +814,7 @@ namespace V1
                                                                 Console.Write("new");
                                                                 Console.SetCursorPosition(3, count+2);
                                                                 Console.Write("return");
-                                                                Console.SetCursorPosition(1, pos3);
-                                                                Console.Write('>');
+                                                                Nav.Arrow(pos3);
 
 
 
@@ -956,24 +824,10 @@ namespace V1
                                                                     case ConsoleKey.Escape:
                                                                         return;
                                                                     case ConsoleKey.UpArrow:
-                                                                        if (pos3 != 1)
-                                                                        {
-                                                                            Console.SetCursorPosition(1, pos3);
-                                                                            Console.Write(' ');
-                                                                            pos3--;
-                                                                            Console.SetCursorPosition(1, pos3);
-                                                                            Console.Write('>');
-                                                                        }
+                                                                        Nav.ArrowUp(ref pos3, 1);
                                                                         break;
                                                                     case ConsoleKey.DownArrow:
-                                                                        if (pos3 != count+2)
-                                                                        {
-                                                                            Console.SetCursorPosition(1, pos3);
-                                                                            Console.Write(' ');
-                                                                            pos3++;
-                                                                            Console.SetCursorPosition(1, pos3);
-                                                                            Console.Write('>');
-                                                                        }
+                                                                        Nav.ArrowDown(ref pos3, count + 2);
                                                                         break;
                                                                     case ConsoleKey.Enter:
                                                                     {
@@ -1099,8 +953,7 @@ namespace V1
                                 Console.SetCursorPosition(3,3);
                                 if(ret.muted) Console.Write(" O ");
                                 else Console.Write(" X ");
-                                Console.SetCursorPosition(1, pos2);
-                                Console.Write('>');
+                                Nav.Arrow(pos2);
 
 
 
@@ -1110,24 +963,10 @@ namespace V1
                                     case ConsoleKey.Escape:
                                         return ret;
                                     case ConsoleKey.UpArrow:
-                                        if (pos2 != 1)
-                                        {
-                                            Console.SetCursorPosition(1, pos2);
-                                            Console.Write(' ');
-                                            pos2--;
-                                            Console.SetCursorPosition(1, pos2);
-                                            Console.Write('>');
-                                        }
+                                        Nav.ArrowUp(ref pos2, 1);
                                         break;
                                     case ConsoleKey.DownArrow:
-                                        if (pos2 != 4)
-                                        {
-                                            Console.SetCursorPosition(1, pos2);
-                                            Console.Write(' ');
-                                            pos2++;
-                                            Console.SetCursorPosition(1, pos2);
-                                            Console.Write('>');
-                                        }
+                                        Nav.ArrowDown(ref pos2, 4);
                                         break;
                                     case ConsoleKey.Enter:
                                         switch(pos2)

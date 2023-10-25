@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Security.Cryptography;
 using Microsoft.VisualBasic;
@@ -13,6 +14,60 @@ namespace V1
                 if(!lim.Contains(i)) return false;
             }
             return true;
+        }
+        
+        public static void Promt(int left, int top, string promt = "")
+        {
+            Console.SetCursorPosition(left,top);
+            Console.Write(promt);
+        }
+        public static void NotNull(int left, int top, string? message = null, string promt = "")
+        {
+            Console.SetCursorPosition(left,top);
+            Console.Write(promt);
+            Console.SetCursorPosition(left + promt.Length + 1,top);
+            if(message != null) Console.Write(message);
+        }
+        public static void NotNull(int left, int top, int? message = null, string promt = "")
+        {
+            Console.SetCursorPosition(left,top);
+            Console.Write(promt);
+            Console.SetCursorPosition(left + promt.Length + 1,top);
+            if(message != null) Console.Write(message);
+        }
+        public static void NotNull(int left, int top, long? message = null, string promt = "")
+        {
+            Console.SetCursorPosition(left,top);
+            Console.Write(promt);
+            Console.SetCursorPosition(left + promt.Length + 1,top);
+            if(message != null) Console.Write(message);
+        }
+        public static void Arrow(int pos, int left = 1, char arrow = '>')
+        {
+            Console.SetCursorPosition(left, pos);
+            Console.Write(arrow);
+        }
+        public static void ArrowUp(ref int pos, int lim, int left = 1, char arrow = '>')
+        {
+            if (pos != lim)
+            {
+                Console.SetCursorPosition(left, pos);
+                Console.Write(' ');
+                pos--;
+                Console.SetCursorPosition(left, pos);
+                Console.Write(arrow);
+            }
+        }
+        public static void ArrowDown(ref int pos, int lim, int left = 1, char arrow = '>')
+        {
+            if (pos != lim)
+            {
+                Console.SetCursorPosition(left, pos);
+                Console.Write(' ');
+                pos++;
+                Console.SetCursorPosition(left, pos);
+                Console.Write(arrow);
+            }
         }
         public static List<string>? setvar(List<string> strings, string lim, int low = 0, int high = int.MaxValue)
         {
@@ -45,24 +100,10 @@ namespace V1
                         if(strings.Count == 0) return null;
                         return strings;
                     case ConsoleKey.UpArrow:
-                        if (pos != 1)
-                        {
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write(' ');
-                            pos--;
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write('>');
-                        }
+                        Nav.ArrowUp(ref pos, 1);
                         break;
                     case ConsoleKey.DownArrow:
-                        if (pos != count+2)
-                        {
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write(' ');
-                            pos++;
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write('>');
-                        }
+                        Nav.ArrowDown(ref pos, count+2);
                         break;
                     case ConsoleKey.Enter:
                     {
@@ -155,24 +196,10 @@ namespace V1
                         if(strings.Count == 0) return null;
                         return strings;
                     case ConsoleKey.UpArrow:
-                        if (pos != 1)
-                        {
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write(' ');
-                            pos--;
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write('>');
-                        }
+                        Nav.ArrowUp(ref pos, 1);
                         break;
                     case ConsoleKey.DownArrow:
-                        if (pos != count+2)
-                        {
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write(' ');
-                            pos++;
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write('>');
-                        }
+                        Nav.ArrowDown(ref pos, count+2);
                         break;
                     case ConsoleKey.Enter:
                     {
@@ -323,24 +350,10 @@ namespace V1
                     case ConsoleKey.Escape:
                         return;
                     case ConsoleKey.UpArrow:
-                        if (pos != 1)
-                        {
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write(' ');
-                            pos--;
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write('>');
-                        }
+                        Nav.ArrowUp(ref pos, 1);
                         break;
                     case ConsoleKey.DownArrow:
-                        if (pos != 5)
-                        {
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write(' ');
-                            pos++;
-                            Console.SetCursorPosition(1, pos);
-                            Console.Write('>');
-                        }
+                        Nav.ArrowDown(ref pos, 5);
                         break;
                     case ConsoleKey.Enter:
                         switch (pos)
@@ -416,7 +429,7 @@ namespace V1
                     case '9':
                         break;
                 }
-                if (Console.cursorleft <  147) Console.SetCursorPosition(Console.CursorLeft + 12, 0);
+                if (Console.CursorLeft <  147) Console.SetCursorPosition(Console.CursorLeft + 12, 0);
             }
             Console.Read();
             return;

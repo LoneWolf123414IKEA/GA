@@ -13,7 +13,6 @@ namespace V1
         {
 
             Console.SetWindowSize(160, 60);
-            Nav.Err("0100");
             string jsonStr;
             if(File.Exists("config.json"))
             {
